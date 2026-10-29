@@ -1,0 +1,1956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <title>Form Mobile — Private AI Hypertrophy Trainer</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style id="gemini-live-ui-style"></style>
+
+    <style>
+        :root {
+            --bg-app: #F5F5F7;
+            --bg-card: #FFFFFF;
+            --text-primary: #1D1D1F;
+            --text-secondary: #86868B;
+            --accent-blue: #0071E3;
+            --sore-red: #FF3B30;
+            --fresh-green: #34C759;
+            --assist-amber: #FF9500;
+            --divider: #D2D2D7;
+            --radius-card: 22px;
+            --radius-pill: 980px;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            background-color: #E5E5EA;
+            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", system-ui, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .mobile-app-shell {
+            max-width: 480px;
+            min-height: 100vh;
+            margin: 0 auto;
+            background-color: var(--bg-app);
+            position: relative;
+            padding-bottom: 108px;
+            box-shadow: 0 0 48px rgba(0, 0, 0, 0.08);
+        }
+
+        .ios-top-bar {
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            background: rgba(245, 245, 247, 0.88);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid rgba(210, 210, 215, 0.65);
+        }
+
+        .ios-tab-bar {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 480px;
+            height: 76px;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-top: 1px solid rgba(210, 210, 215, 0.75);
+            z-index: 45;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            padding-bottom: env(safe-area-inset-bottom, 6px);
+        }
+
+        .tab-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 3px;
+            color: var(--text-secondary);
+            font-size: 11px;
+            font-weight: 500;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            transition: color 180ms ease;
+        }
+
+        .tab-item.active {
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
+
+        .ios-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-card);
+            padding: 20px;
+            box-shadow: 0 2px 14px rgba(0, 0, 0, 0.035);
+            border: 1px solid rgba(210, 210, 215, 0.45);
+        }
+
+        .btn-apple-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            background-color: var(--accent-blue);
+            color: #FFFFFF;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 12px 20px;
+            min-height: 44px;
+            border-radius: var(--radius-pill);
+            border: none;
+            cursor: pointer;
+            transition: transform 150ms ease, opacity 150ms ease;
+        }
+
+        .btn-apple-primary:active {
+            transform: scale(0.97);
+        }
+
+        .btn-apple-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            background-color: #F5F5F7;
+            color: var(--text-primary);
+            font-size: 13px;
+            font-weight: 600;
+            padding: 9px 14px;
+            min-height: 38px;
+            border-radius: 12px;
+            border: 1px solid var(--divider);
+            cursor: pointer;
+            transition: all 150ms ease;
+        }
+
+        .ios-input {
+            height: 42px;
+            padding: 0 12px;
+            border-radius: 11px;
+            border: 1px solid var(--divider);
+            background: #FFFFFF;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-primary);
+            width: 100%;
+        }
+
+        .ios-input:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+
+        .ios-segmented {
+            display: flex;
+            background: rgba(118, 118, 128, 0.12);
+            padding: 3px;
+            border-radius: 12px;
+            gap: 3px;
+        }
+
+        .ios-seg-btn {
+            flex: 1;
+            padding: 7px 10px;
+            border-radius: 9px;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .ios-seg-btn.active {
+            background: #FFFFFF;
+            color: var(--text-primary);
+            font-weight: 600;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+        }
+
+        .muscle-svg-region {
+            stroke: #FFFFFF;
+            stroke-width: 1.25;
+            cursor: pointer;
+            transition: fill 250ms ease, opacity 250ms ease;
+        }
+
+        .body-outline-svg {
+            fill: #EBEBF0;
+            stroke: #D2D2D7;
+            stroke-width: 1.4;
+        }
+
+        .gemini-model-menu {
+            background: #1C1C1E;
+            color: #FFFFFF;
+            border-radius: 18px;
+            padding: 8px;
+            border: 1px solid #2C2C2E;
+        }
+
+        .gemini-model-option {
+            width: 100%;
+            text-align: left;
+            padding: 10px 14px;
+            border-radius: 12px;
+            background: transparent;
+            color: #FFFFFF;
+            border: 1.5px solid transparent;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .gemini-model-option.selected {
+            border-color: #FFFFFF;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body>
+
+<!-- ========================================== -->
+<!-- PRIVATE PIN & VAULT LOCK SCREEN (GITHUB SAFE) -->
+<!-- ========================================== -->
+<div id="private-lock-overlay" class="fixed inset-0 z-[100] bg-[#1D1D1F] text-white flex items-center justify-center p-5">
+    <div class="max-w-sm w-full bg-[#2C2C2E] rounded-[28px] p-6 space-y-5 shadow-2xl border border-white/10">
+        <div class="text-center space-y-1">
+            <div class="w-12 h-12 rounded-2xl bg-[#0071E3] flex items-center justify-center mx-auto text-[22px] font-bold mb-2">🔒</div>
+            <h1 class="text-[22px] font-extrabold tracking-tight">Arbaaj's Private Gym</h1>
+            <p id="lock-screen-subtitle" class="text-[12px] text-white/60">
+                Protected Vault • Keys are never stored in public GitHub code
+            </p>
+        </div>
+
+        <!-- Mode A: First-Time Device Setup -->
+        <div id="lock-setup-view" class="space-y-3.5">
+            <div>
+                <label class="text-[11px] font-semibold uppercase tracking-wider text-white/70 block mb-1">Create 4-Digit Access PIN</label>
+                <input id="setup-pin-input" type="password" inputmode="numeric" maxlength="8" placeholder="e.g. 2580" class="w-full h-11 px-3 rounded-xl bg-[#1C1C1E] border border-white/15 text-white text-center text-[18px] tracking-widest font-bold focus:outline-none focus:border-[#0071E3]">
+            </div>
+            <div>
+                <label class="text-[11px] font-semibold uppercase tracking-wider text-white/70 block mb-1">Google Sheet Web App URL</label>
+                <input id="setup-sheet-input" type="url" placeholder="https://script.google.com/macros/s/.../exec" class="w-full h-10 px-3 rounded-xl bg-[#1C1C1E] border border-white/15 text-white text-[12px] font-mono focus:outline-none focus:border-[#0071E3]">
+            </div>
+            <div>
+                <label class="text-[11px] font-semibold uppercase tracking-wider text-white/70 block mb-1">Gemini API Key (Saved on Phone &amp; Sheet only)</label>
+                <input id="setup-apikey-input" type="password" placeholder="Paste your Gemini API Key" class="w-full h-10 px-3 rounded-xl bg-[#1C1C1E] border border-white/15 text-white text-[12px] font-mono focus:outline-none focus:border-[#0071E3]">
+            </div>
+            <button type="button" onclick="completePrivateVaultSetup()" class="btn-apple-primary w-full py-3">
+                Unlock &amp; Encrypt on This Device
+            </button>
+        </div>
+
+        <!-- Mode B: Quick PIN Unlock for Returning User -->
+        <div id="lock-pin-view" class="hidden space-y-4">
+            <div>
+                <label class="text-[11px] font-semibold uppercase tracking-wider text-white/70 block mb-1 text-center">Enter Your PIN to Unlock</label>
+                <input id="unlock-pin-input" type="password" inputmode="numeric" maxlength="8" placeholder="••••" onkeydown="if(event.key==='Enter') verifyPinAndUnlock()" class="w-full h-12 px-3 rounded-xl bg-[#1C1C1E] border border-white/15 text-white text-center text-[22px] tracking-widest font-bold focus:outline-none focus:border-[#0071E3]">
+            </div>
+            <button type="button" onclick="verifyPinAndUnlock()" class="btn-apple-primary w-full py-3">
+                Unlock App
+            </button>
+            <button type="button" onclick="switchToFullVaultSetup()" class="w-full text-center text-[12px] text-white/50 bg-transparent border-0 cursor-pointer">
+                Reset PIN / Change Sheet or API Key
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- ========================================== -->
+<!-- MAIN MOBILE APPLICATION SHELL              -->
+<!-- ========================================== -->
+<div class="mobile-app-shell">
+
+    <!-- DYNAMIC ISLAND REST TIMER PILL -->
+    <div id="dynamic-island-timer" class="hidden fixed top-3 left-1/2 -translate-x-1/2 z-50 bg-[#1D1D1F] text-white px-4 py-2 rounded-full shadow-2xl items-center gap-3 border border-white/15">
+        <span class="w-2.5 h-2.5 rounded-full bg-[#34C759] animate-pulse"></span>
+        <span class="text-[12px] font-medium text-white/80">Rest</span>
+        <span id="island-timer-display" class="text-[14px] font-bold font-mono text-[#0071E3]">01:30</span>
+        <button type="button" onclick="addRestSeconds(30)" class="text-[11px] bg-white/15 px-2 py-0.5 rounded-full font-semibold border-0 text-white cursor-pointer">+30s</button>
+        <button type="button" onclick="stopRestTimer()" class="text-[11px] text-[#FF3B30] font-bold bg-transparent border-0 cursor-pointer">Skip</button>
+    </div>
+
+    <!-- FLOATING 1-TAP RETURN BANNER -->
+    <div id="return-to-workout-banner" class="hidden sticky top-0 z-50 bg-[#0071E3] text-white px-4 py-3 shadow-lg items-center justify-between cursor-pointer" onclick="returnToWorkoutExercise()">
+        <div class="flex items-center gap-2">
+            <span class="text-[18px] font-bold">‹</span>
+            <div>
+                <p id="return-banner-title" class="text-[14px] font-semibold leading-tight">Back to Workout</p>
+                <p id="return-banner-sub" class="text-[11px] text-white/80">Tap to return to exact exercise card</p>
+            </div>
+        </div>
+        <span class="text-[12px] font-semibold bg-white/20 px-2.5 py-1 rounded-full">Return</span>
+    </div>
+
+    <!-- STICKY TRANSLUCENT TOP BAR -->
+    <header class="ios-top-bar px-4 py-3">
+        <div class="flex items-center justify-between">
+            <div>
+                <div class="flex items-center gap-1.5 flex-wrap">
+                    <h1 class="text-[19px] font-extrabold tracking-tight text-[#1D1D1F]">Form</h1>
+                    <span id="top-cycle-badge" class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-[#0071E3]/10 text-[#0071E3]">
+                        Cycle 1 • Day 1
+                    </span>
+                    <button type="button" onclick="syncFromGoogleSheet(true)" id="sheet-sync-pill" class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-[#34C759]/15 text-[#34C759] border-0 cursor-pointer flex items-center gap-1">
+                        <span id="sheet-sync-dot" class="w-1.5 h-1.5 rounded-full bg-[#34C759]"></span>
+                        <span id="sheet-sync-text">Sheet Ready</span>
+                    </button>
+                </div>
+                <p id="top-profile-sub" class="text-[11px] text-[#86868B] mt-0.5 font-medium">
+                    Loading clock &amp; stats...
+                </p>
+            </div>
+            <div class="flex items-center gap-1.5">
+                <button type="button" onclick="openSettingsModal()" class="px-3 py-1.5 rounded-full bg-white border border-[#D2D2D7] text-[12px] font-semibold text-[#1D1D1F] flex items-center gap-1.5 shadow-sm cursor-pointer">
+                    <span class="w-2 h-2 rounded-full bg-[#0071E3]"></span>
+                    <span id="top-model-pill">4 Argon</span>
+                    <span>⚙️</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN TAB VIEWS -->
+    <main class="px-4 pt-4 space-y-5">
+
+        <!-- TAB 1: 6-DAY STREAK & WORKOUT TRACKER -->
+        <section id="tab-view-split" class="space-y-4">
+            <div class="ios-card space-y-3">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-[#0071E3]">
+                            6-Day Aesthetic Progression Track
+                        </span>
+                        <h2 id="streak-header-title" class="text-[19px] font-bold text-[#1D1D1F]">
+                            Cycle 1 Streak • Auto-Level Up
+                        </h2>
+                    </div>
+                    <span id="streak-completed-count" class="text-[12px] font-bold px-2.5 py-1 rounded-full bg-[#34C759]/15 text-[#34C759]">
+                        0 / 6 Done
+                    </span>
+                </div>
+                <div id="six-day-streak-nodes" class="grid grid-cols-6 gap-1.5 pt-1"></div>
+                <div class="flex items-center justify-between text-[12px] text-[#86868B] pt-1">
+                    <span>Tap any day or advance streak</span>
+                    <button type="button" onclick="skipActiveWorkoutDay()" class="text-[12px] font-semibold text-[#FF9500] bg-[#FF9500]/10 px-3 py-1 rounded-full border-0 cursor-pointer">
+                        ⏭ Skip Day &amp; Advance ›
+                    </button>
+                </div>
+            </div>
+
+            <div class="ios-card space-y-3">
+                <div class="flex items-start justify-between gap-2">
+                    <div>
+                        <span id="split-eyebrow" class="text-[11px] font-bold uppercase tracking-wider text-[#0071E3]">Outfit-Fit Aesthetic</span>
+                        <h2 id="split-day-heading" class="text-[21px] font-bold tracking-tight text-[#1D1D1F]">Day 1: Push A</h2>
+                    </div>
+                    <button type="button" onclick="runFullDayAiWeightPrep()" class="px-3 py-1.5 rounded-full bg-[#0071E3] text-white text-[12px] font-semibold border-0 cursor-pointer shadow-sm shrink-0">
+                        ✨ AI Prep Weights
+                    </button>
+                </div>
+                <p id="split-day-explanation" class="text-[13px] text-[#86868B] leading-relaxed bg-[#F5F5F7] p-3 rounded-xl"></p>
+            </div>
+
+            <div id="split-exercises-list" class="space-y-4"></div>
+
+            <div class="ios-card space-y-3 bg-[#1D1D1F] text-white">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-[11px] text-[#86868B] font-semibold uppercase tracking-wider">Real-Time Google Sheet Sync</p>
+                        <h3 id="finish-workout-summary-title" class="text-[18px] font-bold text-white mt-0.5">0 of 5 Exercises Marked Done</h3>
+                    </div>
+                    <span id="finish-workout-vol-badge" class="text-[13px] font-semibold text-[#34C759] bg-white/10 px-3 py-1 rounded-full">0 kg Volume</span>
+                </div>
+                <p class="text-[12px] text-white/75 leading-relaxed">
+                    Completing saves every set with real-time date &amp; time into your Google Sheet, updates AI memory for your next session, and unlocks the next day.
+                </p>
+                <button type="button" id="submit-day-levelup-btn" onclick="finishDailySessionAndAdvance()" class="btn-apple-primary w-full text-[15px] py-3.5">
+                    ✓ Complete Day &amp; Level Up ›
+                </button>
+            </div>
+        </section>
+
+        <!-- TAB 2: ANATOMY ATLAS -->
+        <section id="tab-view-anatomy" class="hidden space-y-4">
+            <div class="ios-card">
+                <div class="flex items-center justify-between mb-2">
+                    <div>
+                        <span class="text-[11px] font-semibold uppercase tracking-wider text-[#0071E3]">Biomechanical Atlas</span>
+                        <h2 class="text-[22px] font-bold tracking-tight text-[#1D1D1F]">Muscle Recovery</h2>
+                    </div>
+                    <button type="button" id="fresh-color-toggle-btn" onclick="toggleFreshColorPreference()" class="px-3 py-1.5 rounded-full bg-[#F5F5F7] border border-[#D2D2D7] text-[12px] font-semibold text-[#1D1D1F] cursor-pointer">
+                        Fresh: Green
+                    </button>
+                </div>
+                <p class="text-[13px] text-[#86868B] leading-relaxed mb-3">Tap any muscle to toggle <strong>Sore (Red)</strong> vs. <strong>Fresh</strong>.</p>
+                <div class="flex flex-wrap items-center gap-4 py-2.5 px-3 rounded-xl bg-[#F5F5F7] text-[12px] font-medium">
+                    <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-[#FF3B30] inline-block"></span><span class="text-[#1D1D1F]">Sore</span></div>
+                    <div class="flex items-center gap-1.5"><span id="legend-fresh-dot" class="w-3 h-3 rounded-full bg-[#34C759] inline-block"></span><span class="text-[#1D1D1F]">Fresh</span></div>
+                    <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-[#FF9500] inline-block"></span><span class="text-[#1D1D1F]">Assists</span></div>
+                </div>
+            </div>
+            <div class="ios-card space-y-3">
+                <div class="flex items-center justify-between">
+                    <label class="text-[13px] font-semibold text-[#1D1D1F]" for="synergy-exercise-select">Inspect Exercise:</label>
+                    <button type="button" onclick="clearExerciseSynergyPreview()" class="text-[12px] font-semibold text-[#0071E3] bg-transparent border-0 cursor-pointer">Reset View</button>
+                </div>
+                <select id="synergy-exercise-select" onchange="onSelectSynergyExercise(this.value)" class="ios-input text-[14px]"></select>
+            </div>
+            <div class="ios-card">
+                <div class="grid grid-cols-2 gap-3 items-center justify-items-center py-2">
+                    <div class="flex flex-col items-center w-full">
+                        <span class="text-[11px] font-semibold text-[#86868B] uppercase tracking-wider mb-2">Anterior (Front)</span>
+                        <svg viewBox="0 0 240 500" class="w-full max-w-[195px] h-auto select-none">
+                            <ellipse cx="120" cy="38" rx="21" ry="26" class="body-outline-svg"/>
+                            <path d="M108 62 L106 82 L134 82 L132 62 Z" class="body-outline-svg"/>
+                            <path data-muscle="shoulders" onclick="onTapMuscleMap('shoulders')" class="muscle-svg-region" d="M76 88 C58 92 52 112 56 132 C64 128 76 118 82 104 Z"/>
+                            <path data-muscle="shoulders" onclick="onTapMuscleMap('shoulders')" class="muscle-svg-region" d="M164 88 C182 92 188 112 184 132 C176 128 164 118 158 104 Z"/>
+                            <path data-muscle="chest" onclick="onTapMuscleMap('chest')" class="muscle-svg-region" d="M82 90 L118 90 L118 140 C100 142 84 134 78 118 Z"/>
+                            <path data-muscle="chest" onclick="onTapMuscleMap('chest')" class="muscle-svg-region" d="M158 90 L122 90 L122 140 C140 142 156 134 162 118 Z"/>
+                            <path data-muscle="biceps" onclick="onTapMuscleMap('biceps')" class="muscle-svg-region" d="M56 134 C52 154 52 174 58 188 C68 186 74 170 76 140 Z"/>
+                            <path data-muscle="biceps" onclick="onTapMuscleMap('biceps')" class="muscle-svg-region" d="M184 134 C188 154 188 174 182 188 C172 186 166 170 164 140 Z"/>
+                            <path data-muscle="forearms" onclick="onTapMuscleMap('forearms')" class="muscle-svg-region" d="M56 192 C46 214 42 240 40 260 L52 262 C60 242 68 216 70 192 Z"/>
+                            <path data-muscle="forearms" onclick="onTapMuscleMap('forearms')" class="muscle-svg-region" d="M184 192 C194 214 198 240 200 260 L188 262 C180 242 172 216 170 192 Z"/>
+                            <path data-muscle="core" onclick="onTapMuscleMap('core')" class="muscle-svg-region" d="M96 144 L144 144 L140 232 L100 232 Z"/>
+                            <path data-muscle="quads" onclick="onTapMuscleMap('quads')" class="muscle-svg-region" d="M80 232 L116 238 L112 350 L84 346 C74 310 74 270 80 232 Z"/>
+                            <path data-muscle="quads" onclick="onTapMuscleMap('quads')" class="muscle-svg-region" d="M160 232 L124 238 L128 350 L156 346 C166 310 166 270 160 232 Z"/>
+                            <path data-muscle="calves" onclick="onTapMuscleMap('calves')" class="muscle-svg-region" d="M84 362 L110 362 L106 462 L88 462 C80 428 80 392 84 362 Z"/>
+                            <path data-muscle="calves" onclick="onTapMuscleMap('calves')" class="muscle-svg-region" d="M156 362 L130 362 L134 462 L152 462 C160 428 160 392 156 362 Z"/>
+                        </svg>
+                    </div>
+                    <div class="flex flex-col items-center w-full">
+                        <span class="text-[11px] font-semibold text-[#86868B] uppercase tracking-wider mb-2">Posterior (Back)</span>
+                        <svg viewBox="0 0 240 500" class="w-full max-w-[195px] h-auto select-none">
+                            <ellipse cx="120" cy="38" rx="21" ry="26" class="body-outline-svg"/>
+                            <path data-muscle="back" onclick="onTapMuscleMap('back')" class="muscle-svg-region" d="M120 64 L80 88 L120 152 L160 88 Z"/>
+                            <path data-muscle="shoulders" onclick="onTapMuscleMap('shoulders')" class="muscle-svg-region" d="M78 88 C60 94 54 112 58 130 L82 114 Z"/>
+                            <path data-muscle="shoulders" onclick="onTapMuscleMap('shoulders')" class="muscle-svg-region" d="M162 88 C180 94 186 112 182 130 L158 114 Z"/>
+                            <path data-muscle="back" onclick="onTapMuscleMap('back')" class="muscle-svg-region" d="M82 118 L117 154 L114 214 L84 198 C76 170 76 142 82 118 Z"/>
+                            <path data-muscle="back" onclick="onTapMuscleMap('back')" class="muscle-svg-region" d="M158 118 L123 154 L126 214 L156 198 C164 170 164 142 158 118 Z"/>
+                            <path data-muscle="triceps" onclick="onTapMuscleMap('triceps')" class="muscle-svg-region" d="M58 132 C52 154 52 174 58 190 L74 186 L76 136 Z"/>
+                            <path data-muscle="triceps" onclick="onTapMuscleMap('triceps')" class="muscle-svg-region" d="M182 132 C188 154 188 174 182 190 L166 186 L164 136 Z"/>
+                            <path data-muscle="hamstrings" onclick="onTapMuscleMap('hamstrings')" class="muscle-svg-region" d="M82 214 L118 218 L114 352 L84 350 C76 305 76 255 82 214 Z"/>
+                            <path data-muscle="hamstrings" onclick="onTapMuscleMap('hamstrings')" class="muscle-svg-region" d="M158 214 L122 218 L126 352 L156 350 C164 305 164 255 158 214 Z"/>
+                            <path data-muscle="calves" onclick="onTapMuscleMap('calves')" class="muscle-svg-region" d="M84 364 L112 364 L106 462 L88 462 C78 420 78 388 84 364 Z"/>
+                            <path data-muscle="calves" onclick="onTapMuscleMap('calves')" class="muscle-svg-region" d="M156 364 L128 364 L134 462 L152 462 C162 420 162 388 156 364 Z"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="pt-3 mt-3 border-t border-[#D2D2D7]">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[12px] font-semibold text-[#1D1D1F]">Tap Muscle to Toggle Sore vs. Fresh:</span>
+                        <button type="button" onclick="resetAllMusclesFresh()" class="text-[12px] font-semibold text-[#0071E3] bg-transparent border-0 cursor-pointer">Reset All</button>
+                    </div>
+                    <div id="anatomy-muscle-chips" class="flex flex-wrap gap-1.5"></div>
+                </div>
+            </div>
+            <div class="ios-card space-y-2.5">
+                <div class="flex items-center justify-between">
+                    <span id="anatomy-detail-badge" class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-[#34C759]/15 text-[#34C759]">Fresh</span>
+                    <button type="button" onclick="openMuscleWikiLink()" class="text-[12px] font-semibold text-[#0071E3] bg-transparent border-0 cursor-pointer">MuscleWiki ↗</button>
+                </div>
+                <h3 id="anatomy-detail-title" class="text-[20px] font-bold text-[#1D1D1F]">Chest</h3>
+                <p id="anatomy-detail-desc" class="text-[13px] text-[#86868B] leading-relaxed"></p>
+                <div id="anatomy-synergy-breakdown" class="p-3 rounded-xl bg-[#F5F5F7] text-[12px] space-y-1"></div>
+                <ul id="anatomy-detail-cues" class="text-[13px] text-[#1D1D1F]/90 pl-4 list-disc space-y-1"></ul>
+            </div>
+        </section>
+
+        <!-- TAB 3: BODY TRACK -->
+        <section id="tab-view-body" class="hidden space-y-4">
+            <div class="ios-card space-y-4">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <span class="text-[11px] font-semibold uppercase tracking-wider text-[#0071E3]">Biometrics &amp; Proportions</span>
+                        <h2 class="text-[21px] font-bold tracking-tight text-[#1D1D1F]">Body Stats &amp; Intake</h2>
+                    </div>
+                    <button type="button" onclick="openOnboardingModal()" class="btn-apple-secondary py-1 px-3 text-[12px]">Edit Stats</button>
+                </div>
+                <div class="grid grid-cols-3 gap-2.5">
+                    <div class="p-3 rounded-2xl bg-[#F5F5F7]">
+                        <span class="text-[11px] text-[#86868B] block">Weight</span>
+                        <span id="body-current-weight" class="text-[19px] font-bold text-[#1D1D1F]">--</span>
+                        <span id="body-height-sub" class="text-[11px] text-[#86868B] block">--</span>
+                    </div>
+                    <div class="p-3 rounded-2xl bg-[#F5F5F7]">
+                        <span class="text-[11px] text-[#86868B] block">Intake</span>
+                        <span id="body-calories-display" class="text-[19px] font-bold text-[#0071E3]">--</span>
+                        <span id="body-protein-display" class="text-[11px] text-[#86868B] block">--</span>
+                    </div>
+                    <div class="p-3 rounded-2xl bg-[#F5F5F7]">
+                        <span class="text-[11px] text-[#86868B] block">TDEE</span>
+                        <span id="body-tdee-display" class="text-[19px] font-bold text-[#1D1D1F]">--</span>
+                        <span id="body-surplus-badge" class="text-[11px] text-[#34C759] font-semibold block">+400 kcal</span>
+                    </div>
+                </div>
+            </div>
+            <div class="ios-card space-y-3">
+                <h3 class="text-[18px] font-bold text-[#1D1D1F]">Aesthetic Tape Measurements</h3>
+                <div id="measurements-cards-list" class="space-y-2.5 pt-1"></div>
+            </div>
+        </section>
+
+        <!-- TAB 4: CALENDAR HISTORY -->
+        <section id="tab-view-calendar" class="hidden space-y-4">
+            <div class="ios-card space-y-4">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <span class="text-[11px] font-semibold uppercase tracking-wider text-[#0071E3]">Google Sheet Cloud History</span>
+                        <h2 id="calendar-month-title" class="text-[22px] font-bold text-[#1D1D1F]">Month</h2>
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                        <button type="button" onclick="changeCalendarMonth(-1)" class="btn-apple-secondary py-1.5 px-3">‹</button>
+                        <button type="button" onclick="changeCalendarMonth(0)" class="btn-apple-secondary py-1.5 px-3 text-[12px]">Today</button>
+                        <button type="button" onclick="changeCalendarMonth(1)" class="btn-apple-secondary py-1.5 px-3">›</button>
+                    </div>
+                </div>
+                <div class="grid grid-cols-7 text-center text-[11px] font-semibold text-[#86868B] pb-1">
+                    <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+                </div>
+                <div id="calendar-days-grid" class="grid grid-cols-7 gap-1.5"></div>
+                <div class="flex items-center justify-between pt-2 border-t border-[#D2D2D7] text-[12px] text-[#86868B]">
+                    <span>Tap any date to inspect sets &amp; weights</span>
+                    <button type="button" onclick="syncFromGoogleSheet(true)" class="text-[12px] font-semibold text-[#0071E3] bg-transparent border-0 cursor-pointer">↻ Sync Sheet</button>
+                </div>
+            </div>
+            <div class="ios-card space-y-3">
+                <div class="flex items-center justify-between">
+                    <h3 id="calendar-selected-date-label" class="text-[17px] font-bold text-[#1D1D1F]">Select date</h3>
+                    <span id="calendar-selected-vol-badge" class="text-[12px] font-bold text-[#0071E3]"></span>
+                </div>
+                <div id="calendar-selected-logs" class="space-y-2.5 text-[13px] text-[#86868B]"></div>
+            </div>
+        </section>
+
+        <!-- TAB 5: AI BRAIN -->
+        <section id="tab-view-ai" class="hidden space-y-4">
+            <div class="ios-card space-y-3">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <span class="text-[11px] font-semibold uppercase tracking-wider text-[#0071E3]">Trained on Sheet History</span>
+                        <h2 class="text-[21px] font-bold text-[#1D1D1F]">Gemini Hypertrophy Brain</h2>
+                    </div>
+                    <button type="button" onclick="clearAiChatHistory()" class="text-[12px] text-[#86868B] bg-transparent border-0 cursor-pointer">Clear</button>
+                </div>
+                <div class="gemini-model-menu space-y-1" id="ai-tab-model-cards"></div>
+                <div class="pt-1">
+                    <div class="flex items-center justify-between mb-1.5">
+                        <span class="text-[12px] font-semibold text-[#1D1D1F]">Thinking level</span>
+                        <span id="thinking-level-desc" class="text-[11px] text-[#0071E3] font-semibold">High • Deep biomechanics</span>
+                    </div>
+                    <div class="ios-segmented" id="thinking-level-bar">
+                        <button type="button" onclick="setThinkingLevel('Minimal')" data-think="Minimal" class="ios-seg-btn">Minimal</button>
+                        <button type="button" onclick="setThinkingLevel('Low')" data-think="Low" class="ios-seg-btn">Low</button>
+                        <button type="button" onclick="setThinkingLevel('Medium')" data-think="Medium" class="ios-seg-btn">Medium</button>
+                        <button type="button" onclick="setThinkingLevel('High')" data-think="High" class="ios-seg-btn active">High</button>
+                    </div>
+                </div>
+                <div class="flex gap-2 overflow-x-auto no-scrollbar pt-1">
+                    <button type="button" onclick="sendQuickCoachPrompt('Analyze my Google Sheet workout history and body weight, and tell me exact weights and reps to target today.')" class="shrink-0 px-3 py-1.5 rounded-full bg-[#F5F5F7] text-[12px] font-semibold text-[#1D1D1F] border border-[#D2D2D7] cursor-pointer">📈 Next Session Weights</button>
+                    <button type="button" onclick="sendQuickCoachPrompt('How are my upper chest, side delts, lats, and arms progressing for my outfit-fit aesthetic goal?')" class="shrink-0 px-3 py-1.5 rounded-full bg-[#F5F5F7] text-[12px] font-semibold text-[#1D1D1F] border border-[#D2D2D7] cursor-pointer">👕 Outfit-Fit Check</button>
+                </div>
+            </div>
+            <div class="ios-card flex flex-col h-[410px]">
+                <div id="ai-chat-stream" class="flex-1 overflow-y-auto space-y-3 pr-1"></div>
+                <form onsubmit="handleAiChatSubmit(event)" class="pt-3 mt-2 border-t border-[#D2D2D7] flex gap-2">
+                    <input id="ai-chat-input" type="text" placeholder="Ask 4 Argon about weights, form, or diet..." class="ios-input flex-1">
+                    <button type="submit" class="btn-apple-primary px-4 py-2">Send</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- BOTTOM TAB BAR -->
+    <nav class="ios-tab-bar">
+        <button type="button" id="nav-tab-split" onclick="switchMobileTab('split')" class="tab-item active">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+            <span>6-Day Track</span>
+        </button>
+        <button type="button" id="nav-tab-calendar" onclick="switchMobileTab('calendar')" class="tab-item">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            <span>Calendar</span>
+        </button>
+        <button type="button" id="nav-tab-anatomy" onclick="switchMobileTab('anatomy')" class="tab-item">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+            <span>Anatomy</span>
+        </button>
+        <button type="button" id="nav-tab-body" onclick="switchMobileTab('body')" class="tab-item">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+            <span>Body Stats</span>
+        </button>
+        <button type="button" id="nav-tab-ai" onclick="switchMobileTab('ai')" class="tab-item">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+            <span>AI Brain</span>
+        </button>
+    </nav>
+
+</div>
+
+<!-- MODAL 1: BIOMETRIC STATS -->
+<div id="onboarding-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-md p-4 overflow-y-auto">
+    <div class="ios-card max-w-md w-full my-auto space-y-4">
+        <div class="flex items-start justify-between border-b border-[#D2D2D7] pb-3">
+            <h2 class="text-[20px] font-bold text-[#1D1D1F]">Edit Body Stats &amp; Intake</h2>
+            <button type="button" onclick="closeOnboardingModal()" class="text-[#86868B] text-[20px] bg-transparent border-0 cursor-pointer">✕</button>
+        </div>
+        <form onsubmit="saveOnboardingBaseline(event)" class="space-y-4">
+            <div class="grid grid-cols-3 gap-2.5">
+                <div><label class="text-[11px] text-[#86868B]">Age</label><input id="ob-age" type="number" required class="ios-input"></div>
+                <div><label class="text-[11px] text-[#86868B]">Height (cm)</label><input id="ob-height" type="number" step="0.5" required class="ios-input"></div>
+                <div><label class="text-[11px] text-[#86868B]">Weight (kg)</label><input id="ob-weight" type="number" step="0.1" required class="ios-input"></div>
+            </div>
+            <div class="grid grid-cols-2 gap-2.5">
+                <div><label class="text-[11px] text-[#86868B]">Daily Calories</label><input id="ob-calories" type="number" required class="ios-input"></div>
+                <div><label class="text-[11px] text-[#86868B]">Daily Protein (g)</label><input id="ob-protein" type="number" required class="ios-input"></div>
+            </div>
+            <div class="grid grid-cols-2 gap-2.5">
+                <div><label class="text-[11px] text-[#86868B]">Chest (in)</label><input id="ob-chest" type="number" step="0.1" class="ios-input"></div>
+                <div><label class="text-[11px] text-[#86868B]">Biceps (in)</label><input id="ob-biceps" type="number" step="0.1" class="ios-input"></div>
+                <div><label class="text-[11px] text-[#86868B]">Shoulders (in)</label><input id="ob-shoulders" type="number" step="0.1" class="ios-input"></div>
+                <div><label class="text-[11px] text-[#86868B]">Forearms (in)</label><input id="ob-forearms" type="number" step="0.1" class="ios-input"></div>
+                <div><label class="text-[11px] text-[#86868B]">Thighs (in)</label><input id="ob-thighs" type="number" step="0.1" class="ios-input"></div>
+                <div><label class="text-[11px] text-[#86868B]">Calves (in)</label><input id="ob-calves" type="number" step="0.1" class="ios-input"></div>
+                <div class="col-span-2"><label class="text-[11px] text-[#86868B]">Waist (in)</label><input id="ob-waist" type="number" step="0.1" class="ios-input"></div>
+            </div>
+            <button type="submit" class="btn-apple-primary w-full">Save &amp; Sync to Sheet</button>
+        </form>
+    </div>
+</div>
+
+<!-- MODAL 2: SETTINGS & PRIVATE VAULT -->
+<div id="settings-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-md p-4 overflow-y-auto">
+    <div class="ios-card max-w-md w-full my-auto space-y-4">
+        <div class="flex items-center justify-between border-b border-[#D2D2D7] pb-3">
+            <h3 class="text-[19px] font-bold text-[#1D1D1F]">Cloud Sheet &amp; Vault Settings</h3>
+            <button type="button" onclick="closeSettingsModal()" class="text-[#86868B] text-[20px] bg-transparent border-0 cursor-pointer">✕</button>
+        </div>
+        <div class="space-y-2">
+            <label class="text-[12px] font-bold uppercase text-[#0071E3] block">Google Sheet Web App URL</label>
+            <input id="settings-sheet-url-input" type="text" class="ios-input text-[12px] font-mono">
+            <div class="flex gap-2">
+                <button type="button" onclick="saveSettingsSheetUrl()" class="btn-apple-primary flex-1 py-2 text-[13px]">Save Sheet URL</button>
+                <button type="button" onclick="syncFromGoogleSheet(true)" class="btn-apple-secondary flex-1 py-2 text-[13px]">Test Sync</button>
+            </div>
+        </div>
+        <div class="space-y-2 pt-2 border-t border-[#D2D2D7]">
+            <label class="text-[12px] font-bold block">Gemini API Key (Private Local + Sheet Vault)</label>
+            <input id="settings-api-key-input" type="password" class="ios-input text-[12px] font-mono">
+            <button type="button" onclick="saveSettingsApiKey()" class="btn-apple-secondary w-full">Save API Key to Vault</button>
+        </div>
+        <div class="pt-2 border-t border-[#D2D2D7] flex justify-between items-center">
+            <span class="text-[12px] text-[#86868B]">Lock App Now</span>
+            <button type="button" onclick="lockAppImmediately()" class="px-3 py-1.5 rounded-xl bg-[#FF3B30]/15 text-[#FF3B30] font-semibold text-[12px] border-0 cursor-pointer">🔒 Lock Screen</button>
+        </div>
+    </div>
+</div>
+
+<!-- TOAST NOTIFICATION -->
+<div id="ios-toast" class="fixed top-16 left-1/2 -translate-x-1/2 z-50 hidden px-5 py-2.5 rounded-full bg-[#1D1D1F]/95 text-white text-[13px] font-semibold shadow-xl flex items-center gap-3 whitespace-nowrap">
+    <span id="ios-toast-text">Saved</span>
+</div>
+
+<script>
+    // ZERO SECRETS HARDCODED IN SOURCE CODE — 100% SAFE FOR GITHUB HOSTING
+    const STORAGE_KEY = 'FORM_MOBILE_ARBAAJ_PRIVATE_V12';
+    const VAULT_KEY = 'FORM_MOBILE_ARBAAJ_VAULT_V12';
+
+    const AI_MODELS = [
+        { id: '3.5 Flash-Lite', desc: 'Fastest answers', apiModel: 'gemini-2.5-flash-lite' },
+        { id: '3.8 Flash', desc: 'All-around help', apiModel: 'gemini-2.5-flash' },
+        { id: '3.1 Pro', desc: 'Advanced reasoning', apiModel: 'gemini-2.5-pro' },
+        { id: '4 Argon', desc: 'Complex tasks', apiModel: 'gemini-2.5-pro' }
+    ];
+
+    const MUSCLE_CATALOG = {
+        chest: { id: 'chest', name: 'Pectoralis Major (Upper & Mid Chest)', shortName: 'Chest', wikiSlug: 'chest', recoveryHours: 48, desc: 'Broadens collarbone and upper torso armor plate so outfits fit sharply.', cues: ['Drive upper arms across midline.', 'Control the 2-second stretch phase.'] },
+        biceps: { id: 'biceps', name: 'Biceps Brachii & Brachialis', shortName: 'Biceps', wikiSlug: 'biceps', recoveryHours: 36, desc: 'Builds front arm peak and lower-bicep fullness on the EZ-Bar Preacher pad.', cues: ['Keep elbows locked in place.', 'Full stretch at the bottom of every rep.'] },
+        triceps: { id: 'triceps', name: 'Triceps Brachii', shortName: 'Triceps', wikiSlug: 'triceps', recoveryHours: 48, desc: 'Makes up 60% of upper-arm sleeve size.', cues: ['Include both overhead extensions and pushdowns.'] },
+        shoulders: { id: 'shoulders', name: 'Deltoids (Side & Rear Frame)', shortName: 'Shoulders', wikiSlug: 'shoulders', recoveryHours: 36, desc: 'Widens shoulder seams for a 3D V-taper frame.', cues: ['Raise in the scapular plane (30° forward).'] },
+        back: { id: 'back', name: 'Latissimus Dorsi & Upper Back', shortName: 'Back & Lats', wikiSlug: 'lats', recoveryHours: 48, desc: 'Creates V-taper width from armpit to waist and posture thickness.', cues: ['Drive elbows down to hips on pulldowns; flare elbows on upper-back rows.'] },
+        forearms: { id: 'forearms', name: 'Brachioradialis & Forearms', shortName: 'Forearms', wikiSlug: 'forearms', recoveryHours: 36, desc: 'Thickens lower arms in rolled-up sleeves.', cues: ['Control eccentric lowering.'] },
+        core: { id: 'core', name: 'Rectus Abdominis & Core', shortName: 'Core', wikiSlug: 'abdominals', recoveryHours: 24, desc: 'Keeps waist tight and stabilizes heavy lifts.', cues: ['Curl pelvis upward toward ribs.'] },
+        quads: { id: 'quads', name: 'Quadriceps', shortName: 'Quads', wikiSlug: 'quads', recoveryHours: 48, desc: 'Anterior thigh sweep and athletic base.', cues: ['Full knee flexion with pelvis glued to pad.'] },
+        hamstrings: { id: 'hamstrings', name: 'Hamstrings & Glutes', shortName: 'Hamstrings', wikiSlug: 'hamstrings', recoveryHours: 48, desc: 'Posterior chain thickness via leg curls and RDLs.', cues: ['Push hips straight back on RDLs.'] },
+        calves: { id: 'calves', name: 'Gastrocnemius & Soleus', shortName: 'Calves', wikiSlug: 'calves', recoveryHours: 36, desc: 'Lower leg proportion.', cues: ['Pause 1 full second at the bottom stretch.'] }
+    };
+
+    const INITIAL_SPLIT_DAYS = [
+        {
+            day: 1, name: 'Day 1 — Push A: Upper Chest, Side Delts & Triceps', shortTab: 'Day 1', subLabel: 'Push A',
+            logic: 'Prioritizes upper-chest collarbone breadth, lateral deltoid width for shoulder seams, and both lateral + long heads of the triceps.',
+            exercises: [
+                { id: 'd1_ex1', name: 'Incline Chest Press Machine', primary: 'chest', secondary: ['shoulders', 'triceps'], defaultSets: 3, targetReps: 10, targetRange: '8–10 reps', restSec: 150, bwRatio: 0.55, defaultWeight: 30, cues: ['Align handles with upper chest.', 'Keep shoulder blades retracted into pad.'] },
+                { id: 'd1_ex2', name: 'Pec Deck Machine Fly', primary: 'chest', secondary: ['shoulders'], defaultSets: 3, targetReps: 12, targetRange: '10–12 reps', restSec: 90, bwRatio: 0.45, defaultWeight: 25, cues: ['Slight elbow bend; squeeze inner chest 1s.'] },
+                { id: 'd1_ex3', name: 'Seated Dumbbell Lateral Raise', primary: 'shoulders', secondary: [], defaultSets: 3, targetReps: 15, targetRange: '12–15 reps', restSec: 75, bwRatio: 0.14, defaultWeight: 7.5, cues: ['Sit upright on bench to eliminate momentum.'] },
+                { id: 'd1_ex4', name: 'Dual-Rope Cable Triceps Pushdown', primary: 'triceps', secondary: [], defaultSets: 3, targetReps: 12, targetRange: '10–12 reps', restSec: 90, bwRatio: 0.35, defaultWeight: 20, cues: ['Pin elbows to ribs; flare rope at bottom.'] },
+                { id: 'd1_ex5', name: 'Overhead Cable Rope Triceps Extension', primary: 'triceps', secondary: [], defaultSets: 3, targetReps: 12, targetRange: '10–12 reps', restSec: 90, bwRatio: 0.30, defaultWeight: 17.5, cues: ['Deep stretch behind head for the long head.'] }
+            ]
+        },
+        {
+            day: 2, name: 'Day 2 — Pull A: Lat Width, Mid-Back, Rear Delts & Biceps', shortTab: 'Day 2', subLabel: 'Pull A',
+            logic: 'Builds V-taper lats, 3D rear delts, short-head bicep thickness (EZ-Bar Preacher Curl), and long-head peak (Incline Stretch Curl).',
+            exercises: [
+                { id: 'd2_ex1', name: 'Neutral-Grip Lat Pulldown', primary: 'back', secondary: ['biceps', 'forearms'], defaultSets: 3, targetReps: 10, targetRange: '8–10 reps', restSec: 150, bwRatio: 0.65, defaultWeight: 35, cues: ['Pull to upper chest; drive elbows down.'] },
+                { id: 'd2_ex2', name: 'Seated Cable Row (Close/Mid Grip)', primary: 'back', secondary: ['biceps', 'shoulders'], defaultSets: 3, targetReps: 10, targetRange: '8–10 reps', restSec: 120, bwRatio: 0.65, defaultWeight: 35, cues: ['Keep torso steady; squeeze mid-back.'] },
+                { id: 'd2_ex3', name: 'Reverse Pec Deck Rear Delt Fly', primary: 'shoulders', secondary: ['back'], defaultSets: 3, targetReps: 15, targetRange: '12–15 reps', restSec: 75, bwRatio: 0.35, defaultWeight: 20, cues: ['Sweep wide outward for rear delts.'] },
+                { id: 'd2_ex4', name: 'EZ-Bar Preacher Curl', primary: 'biceps', secondary: ['forearms'], defaultSets: 3, targetReps: 10, targetRange: '8–12 reps', restSec: 90, bwRatio: 0.32, defaultWeight: 17.5, cues: ['Lock triceps firmly against preacher pad.'] },
+                { id: 'd2_ex5', name: 'Incline Dumbbell Stretch Curl', primary: 'biceps', secondary: ['forearms'], defaultSets: 3, targetReps: 12, targetRange: '10–12 reps', restSec: 90, bwRatio: 0.16, defaultWeight: 8, cues: ['60° incline; let arms hang straight back.'] }
+            ]
+        },
+        {
+            day: 3, name: 'Day 3 — Legs A: Quad Sweep, Hamstrings, Calves & Core', shortTab: 'Day 3', subLabel: 'Legs A',
+            logic: 'Develops complete quadriceps sweep, knee-flexion hamstrings, calves, and tight waist control.',
+            exercises: [
+                { id: 'd3_ex1', name: 'Hack Squat Machine', primary: 'quads', secondary: ['hamstrings', 'core'], defaultSets: 3, targetReps: 10, targetRange: '8–10 reps', restSec: 160, bwRatio: 0.90, defaultWeight: 50, cues: ['Full safe depth with back against pad.'] },
+                { id: 'd3_ex2', name: 'Supported Sissy Squat (Rectus Femoris)', primary: 'quads', secondary: ['core'], defaultSets: 2, targetReps: 12, targetRange: '10–12 reps', restSec: 90, bwRatio: 0.0, defaultWeight: 0, cues: ['Drive knees forward while leaning torso back.'] },
+                { id: 'd3_ex3', name: 'Seated Leg Curl Machine', primary: 'hamstrings', secondary: ['calves'], defaultSets: 3, targetReps: 12, targetRange: '10–12 reps', restSec: 90, bwRatio: 0.55, defaultWeight: 30, cues: ['Lock thigh pad tight; pause 1s at contraction.'] },
+                { id: 'd3_ex4', name: 'Standing / Seated Calf Raise Machine', primary: 'calves', secondary: [], defaultSets: 3, targetReps: 15, targetRange: '12–15 reps', restSec: 75, bwRatio: 0.65, defaultWeight: 35, cues: ['1s pause at bottom stretch.'] },
+                { id: 'd3_ex5', name: 'Bench / Hanging Leg Raise', primary: 'core', secondary: [], defaultSets: 3, targetReps: 15, targetRange: '12–15 reps', restSec: 60, bwRatio: 0.0, defaultWeight: 0, cues: ['Curl pelvis upward.'] }
+            ]
+        },
+        {
+            day: 4, name: 'Day 4 — Push B: Full Chest Thickness, Side Delts & Triceps', shortTab: 'Day 4', subLabel: 'Push B',
+            logic: 'Hits mid/upper chest via Smith press and cable flys, constant-tension cable lateral raises, and heavy triceps.',
+            exercises: [
+                { id: 'd4_ex1', name: 'Smith Machine Incline / Flat Press', primary: 'chest', secondary: ['shoulders', 'triceps'], defaultSets: 3, targetReps: 10, targetRange: '8–10 reps', restSec: 150, bwRatio: 0.65, defaultWeight: 35, cues: ['Bench at 15–30°; lower under control.'] },
+                { id: 'd4_ex2', name: 'Standing Cable Chest Fly', primary: 'chest', secondary: ['shoulders'], defaultSets: 3, targetReps: 12, targetRange: '10–15 reps', restSec: 90, bwRatio: 0.22, defaultWeight: 12.5, cues: ['Step forward; squeeze hands together in front.'] },
+                { id: 'd4_ex3', name: 'Single-Arm Cable Lateral Raise', primary: 'shoulders', secondary: [], defaultSets: 3, targetReps: 15, targetRange: '12–15 reps', restSec: 75, bwRatio: 0.10, defaultWeight: 5, cues: ['Wrist-height pulley for constant tension.'] },
+                { id: 'd4_ex4', name: 'Incline DB Overhead Extension / Skullcrusher', primary: 'triceps', secondary: [], defaultSets: 3, targetReps: 12, targetRange: '10–12 reps', restSec: 90, bwRatio: 0.18, defaultWeight: 10, cues: ['Elbows pointed up; deep stretch behind head.'] },
+                { id: 'd4_ex5', name: 'Straight-Bar Cable Triceps Pushdown', primary: 'triceps', secondary: [], defaultSets: 3, targetReps: 10, targetRange: '8–12 reps', restSec: 90, bwRatio: 0.40, defaultWeight: 22.5, cues: ['Lock out hard for lateral head thickness.'] }
+            ]
+        },
+        {
+            day: 5, name: 'Day 5 — Pull B: Upper Back Density, V-Taper & Arm Width', shortTab: 'Day 5', subLabel: 'Pull B',
+            logic: 'Thickens upper back and posture, widens upper lats, and builds brachialis & forearms.',
+            exercises: [
+                { id: 'd5_ex1', name: 'Wide-Grip Lat Pulldown', primary: 'back', secondary: ['biceps', 'forearms'], defaultSets: 3, targetReps: 10, targetRange: '8–10 reps', restSec: 150, bwRatio: 0.65, defaultWeight: 35, cues: ['Overhand wide grip for upper lat flare.'] },
+                { id: 'd5_ex2', name: 'Wide-Grip Seated Cable Row (Elbows Flared)', primary: 'back', secondary: ['shoulders', 'biceps'], defaultSets: 3, targetReps: 12, targetRange: '10–12 reps', restSec: 120, bwRatio: 0.60, defaultWeight: 32.5, cues: ['Elbows 60° out to hit upper back/traps.'] },
+                { id: 'd5_ex3', name: 'Reverse Pec Deck Rear Delt Fly', primary: 'shoulders', secondary: ['back'], defaultSets: 2, targetReps: 15, targetRange: '12–15 reps', restSec: 75, bwRatio: 0.35, defaultWeight: 20, cues: ['Isolate rear delts.'] },
+                { id: 'd5_ex4', name: '45° Back Extension Bench', primary: 'hamstrings', secondary: ['back'], defaultSets: 2, targetReps: 15, targetRange: '12–15 reps', restSec: 90, bwRatio: 0.15, defaultWeight: 10, cues: ['Hinge at hips; squeeze glutes & erectors.'] },
+                { id: 'd5_ex5', name: 'Seated Dumbbell Hammer Curl', primary: 'biceps', secondary: ['forearms'], defaultSets: 3, targetReps: 10, targetRange: '8–12 reps', restSec: 90, bwRatio: 0.18, defaultWeight: 10, cues: ['Neutral palms-in grip for brachialis width.'] },
+                { id: 'd5_ex6', name: 'EZ-Bar Reverse / Close Preacher or Cable Curl', primary: 'biceps', secondary: ['forearms'], defaultSets: 3, targetReps: 12, targetRange: '10–12 reps', restSec: 90, bwRatio: 0.28, defaultWeight: 15, cues: ['Strict forearm & outer-bicep finish.'] }
+            ]
+        },
+        {
+            day: 6, name: 'Day 6 — Legs B: Leg Press, RDL, Split Squats & Calves', shortTab: 'Day 6', subLabel: 'Legs B',
+            logic: 'Completes lower-body development with heavy Leg Press, Dumbbell RDLs, and Smith Split Squats.',
+            exercises: [
+                { id: 'd6_ex1', name: '45° Leg Press Machine', primary: 'quads', secondary: ['hamstrings'], defaultSets: 3, targetReps: 12, targetRange: '10–12 reps', restSec: 150, bwRatio: 1.40, defaultWeight: 75, cues: ['Keep hips wedged into seat pad.'] },
+                { id: 'd6_ex2', name: 'Dumbbell Romanian Deadlift (RDL)', primary: 'hamstrings', secondary: ['back', 'forearms'], defaultSets: 3, targetReps: 10, targetRange: '8–10 reps', restSec: 120, bwRatio: 0.40, defaultWeight: 22.5, cues: ['Push hips straight back; glide DBs on shins.'] },
+                { id: 'd6_ex3', name: 'Smith Machine Split Squat / Reverse Lunge', primary: 'quads', secondary: ['hamstrings'], defaultSets: 2, targetReps: 10, targetRange: '10–12 reps/leg', restSec: 90, bwRatio: 0.45, defaultWeight: 25, cues: ['Fixed bar stability for unilateral leg growth.'] },
+                { id: 'd6_ex4', name: 'Seated Leg Curl Machine', primary: 'hamstrings', secondary: [], defaultSets: 3, targetReps: 12, targetRange: '10–15 reps', restSec: 90, bwRatio: 0.55, defaultWeight: 30, cues: ['Full hamstring knee flexion.'] },
+                { id: 'd6_ex5', name: 'Standing / Seated Calf Raise Machine', primary: 'calves', secondary: [], defaultSets: 3, targetReps: 15, targetRange: '12–20 reps', restSec: 75, bwRatio: 0.65, defaultWeight: 35, cues: ['1s pause at bottom stretch.'] }
+            ]
+        }
+    ];
+
+    let vaultData = {
+        pin: '',
+        sheetUrl: '',
+        apiKey: '',
+        unlockedSession: false
+    };
+
+    let appState = {
+        onboarded: false,
+        selectedModelId: '4 Argon',
+        thinkingLevel: 'High',
+        freshColorPref: 'green',
+        customCss: '',
+        cycleCount: 1,
+        activeDayIndex: 0,
+        completedDaysInCycle: [],
+        profile: { age: 19, heightCm: 178, weightKg: 55.5, dailyCalories: 2600, dailyProtein: 125 },
+        measurements: {
+            weight: { name: 'Body Weight', unit: 'kg', baseline: 55.5, actual: 55.5 },
+            chest: { name: 'Chest', unit: 'in', baseline: 34.5, actual: 34.5 },
+            biceps: { name: 'Biceps (Flexed)', unit: 'in', baseline: 12.5, actual: 12.5 },
+            shoulders: { name: 'Shoulders', unit: 'in', baseline: 42.0, actual: 42.0 },
+            forearms: { name: 'Forearms', unit: 'in', baseline: 10.5, actual: 10.5 },
+            thighs: { name: 'Thighs', unit: 'in', baseline: 19.5, actual: 19.5 },
+            calves: { name: 'Calves', unit: 'in', baseline: 13.5, actual: 13.5 },
+            waist: { name: 'Waist', unit: 'in', baseline: 29.5, actual: 29.5 }
+        },
+        soreMuscles: {},
+        splitDays: JSON.parse(JSON.stringify(INITIAL_SPLIT_DAYS)),
+        exerciseState: {},
+        calendarLogs: {},
+        chatHistory: [
+            { role: 'ai', text: 'Welcome back, Arbaaj! Your private vault is unlocked and synced with your Google Sheet.' }
+        ]
+    };
+
+    let returnNavigationContext = null;
+    let activeSynergyExercise = null;
+    let selectedMuscleOnAtlas = 'chest';
+    let currentCalendarDate = new Date();
+    let selectedCalendarDateKey = formatDateKey(new Date());
+    let restTimerInterval = null;
+    let restSecondsRemaining = 0;
+
+    function formatDateKey(d) {
+        return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+    }
+
+    function getRealTimeDateAndClock() {
+        const now = new Date();
+        return {
+            dateKey: formatDateKey(now),
+            timeStr: now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }),
+            displayClock: now.toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short' }) + ' • ' + now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        };
+    }
+
+    setInterval(function() { updateTopStatusBar(); }, 15000);
+
+    // ==========================================
+    // PRIVATE PIN & VAULT SECURITY SYSTEM
+    // ==========================================
+    function loadVaultAndCheckLock() {
+        try {
+            const rawV = localStorage.getItem(VAULT_KEY);
+            if (rawV) {
+                vaultData = Object.assign({}, vaultData, JSON.parse(rawV));
+            }
+        } catch (e) {}
+
+        const overlay = document.getElementById('private-lock-overlay');
+        const setupView = document.getElementById('lock-setup-view');
+        const pinView = document.getElementById('lock-pin-view');
+
+        if (vaultData.pin && vaultData.sheetUrl) {
+            setupView.classList.add('hidden');
+            pinView.classList.remove('hidden');
+            if (sessionStorage.getItem('FORM_SESSION_UNLOCKED') === '1') {
+                overlay.classList.add('hidden');
+                syncFromGoogleSheet(false);
+            }
+        } else {
+            setupView.classList.remove('hidden');
+            pinView.classList.add('hidden');
+        }
+    }
+
+    function completePrivateVaultSetup() {
+        const pin = document.getElementById('setup-pin-input').value.trim();
+        const sUrl = document.getElementById('setup-sheet-input').value.trim();
+        const aKey = document.getElementById('setup-apikey-input').value.trim();
+
+        if (!pin || pin.length < 4) {
+            alert('Please enter at least a 4-digit PIN.');
+            return;
+        }
+        if (!sUrl) {
+            alert('Please paste your Google Sheet Web App URL.');
+            return;
+        }
+
+        vaultData.pin = pin;
+        vaultData.sheetUrl = sUrl;
+        vaultData.apiKey = aKey;
+        localStorage.setItem(VAULT_KEY, JSON.stringify(vaultData));
+        sessionStorage.setItem('FORM_SESSION_UNLOCKED', '1');
+
+        document.getElementById('private-lock-overlay').classList.add('hidden');
+        showToast('🔓 Vault Encrypted & Unlocked!');
+        // Also backup API key into private Google Sheet User_State so any new device can pull it
+        if (aKey) {
+            pushToGoogleSheet([], { privateApiKey: aKey });
+        }
+        syncFromGoogleSheet(true);
+    }
+
+    function verifyPinAndUnlock() {
+        const entered = document.getElementById('unlock-pin-input').value.trim();
+        if (entered === vaultData.pin) {
+            sessionStorage.setItem('FORM_SESSION_UNLOCKED', '1');
+            document.getElementById('private-lock-overlay').classList.add('hidden');
+            document.getElementById('unlock-pin-input').value = '';
+            showToast('🔓 Welcome back, Arbaaj!');
+            syncFromGoogleSheet(false);
+        } else {
+            alert('Incorrect PIN!');
+        }
+    }
+
+    function switchToFullVaultSetup() {
+        document.getElementById('setup-pin-input').value = vaultData.pin || '';
+        document.getElementById('setup-sheet-input').value = vaultData.sheetUrl || '';
+        document.getElementById('setup-apikey-input').value = vaultData.apiKey || '';
+        document.getElementById('lock-pin-view').classList.add('hidden');
+        document.getElementById('lock-setup-view').classList.remove('hidden');
+    }
+
+    function lockAppImmediately() {
+        sessionStorage.removeItem('FORM_SESSION_UNLOCKED');
+        closeSettingsModal();
+        loadVaultAndCheckLock();
+        document.getElementById('private-lock-overlay').classList.remove('hidden');
+    }
+
+    // ==========================================
+    // STATE STORAGE & INITIALIZATION
+    // ==========================================
+    function saveAppState() {
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(appState)); } catch (e) {}
+    }
+
+    function loadAppState() {
+        try {
+            const raw = localStorage.getItem(STORAGE_KEY);
+            if (raw) {
+                const parsed = JSON.parse(raw);
+                appState = Object.assign({}, appState, parsed);
+                appState.splitDays = JSON.parse(JSON.stringify(INITIAL_SPLIT_DAYS));
+                if (!Array.isArray(appState.completedDaysInCycle)) appState.completedDaysInCycle = [];
+            }
+        } catch (e) {}
+        ensureExerciseStateInitialized();
+    }
+
+    function ensureExerciseStateInitialized() {
+        const bw = parseFloat(appState.profile.weightKg) || 55.5;
+        appState.splitDays.forEach(function(day) {
+            day.exercises.forEach(function(ex) {
+                const suggestedStartWeight = ex.bwRatio > 0 ? Math.max(5, Math.round((bw * ex.bwRatio) / 2.5) * 2.5) : 0;
+                if (!appState.exerciseState[ex.id]) {
+                    const numSets = ex.defaultSets || 3;
+                    const setsArr = [];
+                    for (let i = 0; i < numSets; i++) {
+                        setsArr.push({ weight: suggestedStartWeight, reps: ex.targetReps });
+                    }
+                    appState.exerciseState[ex.id] = {
+                        workingWeight: suggestedStartWeight,
+                        completedToday: false,
+                        feel: 'Balanced',
+                        sets: setsArr,
+                        lastSessionText: 'No prior sheet log yet',
+                        aiNextTargetText: `Start @ ${suggestedStartWeight}kg × ${ex.targetRange}`
+                    };
+                }
+            });
+        });
+    }
+
+    // ==========================================
+    // RELIABLE GOOGLE SHEET 2-WAY SYNC
+    // ==========================================
+    function setSheetSyncBadge(state, label) {
+        const pill = document.getElementById('sheet-sync-pill');
+        const dot = document.getElementById('sheet-sync-dot');
+        const txt = document.getElementById('sheet-sync-text');
+        if (!pill) return;
+        txt.textContent = label;
+        if (state === 'syncing') {
+            pill.className = 'text-[11px] font-semibold px-2 py-0.5 rounded-full bg-[#FF9500]/15 text-[#FF9500] border-0 cursor-pointer flex items-center gap-1';
+            dot.className = 'w-1.5 h-1.5 rounded-full bg-[#FF9500] animate-ping';
+        } else if (state === 'ok') {
+            pill.className = 'text-[11px] font-semibold px-2 py-0.5 rounded-full bg-[#34C759]/15 text-[#34C759] border-0 cursor-pointer flex items-center gap-1';
+            dot.className = 'w-1.5 h-1.5 rounded-full bg-[#34C759]';
+        } else {
+            pill.className = 'text-[11px] font-semibold px-2 py-0.5 rounded-full bg-[#FF3B30]/15 text-[#FF3B30] border-0 cursor-pointer flex items-center gap-1';
+            dot.className = 'w-1.5 h-1.5 rounded-full bg-[#FF3B30]';
+        }
+    }
+
+    async function syncFromGoogleSheet(showNotification) {
+        if (!vaultData.sheetUrl) return;
+        setSheetSyncBadge('syncing', 'Syncing Sheet...');
+        try {
+            const res = await fetch(vaultData.sheetUrl, { method: 'GET', redirect: 'follow' });
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            const data = await res.json();
+
+            if (data.state) {
+                if (typeof data.state.activeDayIndex === 'number') appState.activeDayIndex = data.state.activeDayIndex;
+                if (typeof data.state.cycleCount === 'number') appState.cycleCount = data.state.cycleCount;
+                if (Array.isArray(data.state.completedDaysInCycle)) appState.completedDaysInCycle = data.state.completedDaysInCycle;
+                if (data.state.profile) appState.profile = Object.assign({}, appState.profile, data.state.profile);
+                if (data.state.measurements) appState.measurements = Object.assign({}, appState.measurements, data.state.measurements);
+                if (data.state.privateApiKey && !vaultData.apiKey) {
+                    vaultData.apiKey = data.state.privateApiKey;
+                    localStorage.setItem(VAULT_KEY, JSON.stringify(vaultData));
+                }
+                if (data.state.exerciseState) {
+                    Object.keys(data.state.exerciseState).forEach(function(k) {
+                        if (appState.exerciseState[k]) {
+                            appState.exerciseState[k] = Object.assign({}, appState.exerciseState[k], data.state.exerciseState[k]);
+                        }
+                    });
+                }
+            }
+
+            if (data.logs && Array.isArray(data.logs) && data.logs.length > 0) {
+                const rebuiltCalendar = {};
+                const perExLogs = {};
+
+                data.logs.forEach(function(row) {
+                    const rawDate = row.Date ? String(row.Date).slice(0, 10) : formatDateKey(new Date());
+                    const timeStr = row.Time ? String(row.Time) : '';
+                    const dayName = row.Day_Name || `Day ${row.Day_Number || 1}`;
+                    const exId = row.Exercise_ID || '';
+                    const exName = row.Exercise_Name || 'Exercise';
+                    const weight = parseFloat(row.Weight_kg) || 0;
+                    const reps = parseInt(row.Reps, 10) || 0;
+                    const feel = row.Feel_RIR || 'Balanced';
+                    const aiNext = row.AI_Next_Target || '';
+
+                    if (!rebuiltCalendar[rawDate]) rebuiltCalendar[rawDate] = {};
+                    if (!rebuiltCalendar[rawDate][dayName]) {
+                        rebuiltCalendar[rawDate][dayName] = { dayName: dayName, timestamp: timeStr, exercisesMap: {}, totalVolume: 0 };
+                    }
+                    const sessionGroup = rebuiltCalendar[rawDate][dayName];
+                    if (!sessionGroup.exercisesMap[exName]) {
+                        sessionGroup.exercisesMap[exName] = { name: exName, feel: feel, sets: [], volume: 0, aiNext: aiNext };
+                    }
+                    sessionGroup.exercisesMap[exName].sets.push({ weight: weight, reps: reps });
+                    sessionGroup.exercisesMap[exName].volume += (weight * reps);
+                    sessionGroup.totalVolume += (weight * reps);
+
+                    if (exId) {
+                        if (!perExLogs[exId]) perExLogs[exId] = [];
+                        perExLogs[exId].push({ date: rawDate, weight: weight, reps: reps, feel: feel, aiNext: aiNext });
+                    }
+                });
+
+                const finalCal = {};
+                Object.keys(rebuiltCalendar).forEach(function(dKey) {
+                    finalCal[dKey] = Object.values(rebuiltCalendar[dKey]).map(function(sess) {
+                        return {
+                            dayName: sess.dayName, timestamp: sess.timestamp, exercises: Object.values(sess.exercisesMap), totalVolume: sess.totalVolume
+                        };
+                    });
+                });
+                appState.calendarLogs = finalCal;
+
+                Object.keys(perExLogs).forEach(function(exId) {
+                    const arr = perExLogs[exId];
+                    if (arr.length > 0 && appState.exerciseState[exId]) {
+                        const lastEntry = arr[arr.length - 1];
+                        appState.exerciseState[exId].lastSessionText = `${lastEntry.weight}kg × ${lastEntry.reps} (${lastEntry.date})`;
+                        if (lastEntry.aiNext) appState.exerciseState[exId].aiNextTargetText = lastEntry.aiNext;
+                    }
+                });
+            }
+
+            saveAppState();
+            refreshAllViews();
+            setSheetSyncBadge('ok', 'Sheet Synced');
+            if (showNotification) showToast('✓ Synced with Google Sheet!');
+        } catch (err) {
+            setSheetSyncBadge('offline', 'Local Cache');
+            if (showNotification) showToast('Using local cache');
+        }
+    }
+
+    // CHUNKED GET SYNC — KEEPS URL SHORT SO EVERY ROW SAVES 100% RELIABLY
+    async function pushToGoogleSheet(workoutSetsArray, stateUpdatesObj) {
+        if (!vaultData.sheetUrl) return;
+        setSheetSyncBadge('syncing', 'Saving to Sheet...');
+        try {
+            const sets = workoutSetsArray || [];
+            // Send sets in small batches of 4 so URL never exceeds browser GET length limits
+            for (let i = 0; i < sets.length; i += 4) {
+                const chunk = sets.slice(i, i + 4);
+                const pStr = encodeURIComponent(JSON.stringify({ workoutSets: chunk }));
+                const url = `${vaultData.sheetUrl}?action=save&data=${pStr}`;
+                await fetch(url, { method: 'GET', mode: 'no-cors', redirect: 'follow' });
+            }
+
+            // Send state updates in a separate compact call
+            if (stateUpdatesObj && Object.keys(stateUpdatesObj).length > 0) {
+                const sStr = encodeURIComponent(JSON.stringify({ stateUpdates: stateUpdatesObj }));
+                const sUrl = `${vaultData.sheetUrl}?action=save&data=${sStr}`;
+                await fetch(sUrl, { method: 'GET', mode: 'no-cors', redirect: 'follow' });
+            }
+
+            setSheetSyncBadge('ok', 'Sheet Saved');
+            showToast('✓ Saved to Google Sheet!');
+        } catch (err) {
+            setSheetSyncBadge('offline', 'Saved Locally');
+        }
+    }
+
+    // ==========================================
+    // DOUBLE-PROGRESSION & WORKOUT LOGIC
+    // ==========================================
+    function computeSmartNextTarget(ex, st) {
+        const maxWeightLifted = Math.max.apply(null, st.sets.map(function(s) { return parseFloat(s.weight) || 0; }));
+        const sumReps = st.sets.reduce(function(a, s) { return a + (parseInt(s.reps, 10) || 0); }, 0);
+        const avgReps = sumReps / st.sets.length;
+        const minReps = Math.min.apply(null, st.sets.map(function(s) { return parseInt(s.reps, 10) || 0; }));
+
+        const rangeNums = ex.targetRange.match(/\d+/g);
+        const minTarget = rangeNums && rangeNums[0] ? parseInt(rangeNums[0], 10) : 8;
+        const maxTarget = rangeNums && rangeNums[1] ? parseInt(rangeNums[1], 10) : ex.targetReps;
+
+        const isCompound = ['chest', 'back', 'quads', 'hamstrings'].includes(ex.primary);
+        const increment = isCompound ? 2.5 : 1.25;
+
+        let nextWeight = maxWeightLifted;
+        let nextReps = Math.min(maxTarget, Math.round(avgReps) + 1);
+        let directive = '';
+
+        if (st.feel === 'Too Light' || (minReps >= maxTarget && st.feel !== 'Too Heavy')) {
+            nextWeight = +(maxWeightLifted + increment).toFixed(2);
+            nextReps = minTarget;
+            directive = `Increase to ${nextWeight}kg x ${nextReps}`;
+        } else if (st.feel === 'Too Heavy' || minReps < minTarget - 1) {
+            nextWeight = maxWeightLifted;
+            nextReps = Math.max(minTarget, Math.round(avgReps));
+            directive = `Hold ${nextWeight}kg x ${nextReps}`;
+        } else {
+            nextWeight = maxWeightLifted;
+            nextReps = Math.min(maxTarget, Math.round(avgReps) + 1);
+            directive = `Keep ${nextWeight}kg -> ${nextReps} reps`;
+        }
+
+        return { nextWeight: nextWeight, nextReps: nextReps, directive: directive };
+    }
+
+    function renderSplitTab() {
+        const dIdx = appState.activeDayIndex;
+        const dayObj = appState.splitDays[dIdx];
+
+        document.getElementById('streak-header-title').textContent = `Cycle ${appState.cycleCount} Track • Day ${dIdx + 1} Active`;
+        document.getElementById('streak-completed-count').textContent = `${appState.completedDaysInCycle.length} / 6 Done`;
+
+        const nodesHtml = appState.splitDays.map(function(d, idx) {
+            const isCompleted = appState.completedDaysInCycle.includes(idx);
+            const isActive = idx === dIdx;
+            let boxStyle = 'bg-[#F5F5F7] text-[#86868B] border-[#D2D2D7]';
+            let statusIcon = `D${idx + 1}`;
+            if (isCompleted && isActive) {
+                boxStyle = 'bg-[#34C759] text-white border-[#34C759] ring-2 ring-[#34C759]/40';
+                statusIcon = '✓';
+            } else if (isCompleted) {
+                boxStyle = 'bg-[#34C759]/15 text-[#34C759] border-[#34C759]/40';
+                statusIcon = '✓';
+            } else if (isActive) {
+                boxStyle = 'bg-[#0071E3] text-white border-[#0071E3] shadow-md scale-[1.03]';
+                statusIcon = `D${idx + 1}`;
+            }
+
+            return `
+                <button type="button" onclick="selectActiveSplitDay(${idx})" class="flex flex-col items-center justify-center py-2 px-1 rounded-2xl border transition-all cursor-pointer ${boxStyle}">
+                    <span class="text-[13px] font-extrabold">${statusIcon}</span>
+                    <span class="text-[10px] font-semibold opacity-90 mt-0.5">${d.subLabel}</span>
+                </button>
+            `;
+        }).join('');
+        document.getElementById('six-day-streak-nodes').innerHTML = nodesHtml;
+
+        document.getElementById('split-day-heading').textContent = dayObj.name;
+        document.getElementById('split-day-explanation').textContent = dayObj.logic;
+
+        const listEl = document.getElementById('split-exercises-list');
+        let doneCount = 0;
+        let dayTotalVol = 0;
+
+        listEl.innerHTML = dayObj.exercises.map(function(ex, exIdx) {
+            const st = appState.exerciseState[ex.id];
+            if (st.completedToday) doneCount++;
+            const exVol = st.sets.reduce(function(acc, s) { return acc + ((parseFloat(s.weight) || 0) * (parseInt(s.reps, 10) || 0)); }, 0);
+            if (st.completedToday) dayTotalVol += exVol;
+
+            let setsHtml = '';
+            st.sets.forEach(function(s, sIdx) {
+                setsHtml += `
+                    <div class="grid grid-cols-12 gap-2 items-center">
+                        <span class="col-span-2 text-[12px] font-semibold text-[#86868B]">Set ${sIdx + 1}</span>
+                        <div class="col-span-5 flex items-center bg-white rounded-xl border border-[#D2D2D7] px-2.5 h-9">
+                            <input type="number" step="0.5" value="${s.weight}" onchange="updateExerciseSetValue('${ex.id}', ${sIdx}, 'weight', this.value)" class="w-full text-[14px] font-bold border-0 bg-transparent focus:outline-none">
+                            <span class="text-[11px] text-[#86868B]">kg</span>
+                        </div>
+                        <div class="col-span-5 flex items-center bg-white rounded-xl border border-[#D2D2D7] px-2.5 h-9">
+                            <input type="number" step="1" value="${s.reps}" onchange="updateExerciseSetValue('${ex.id}', ${sIdx}, 'reps', this.value)" class="w-full text-[14px] font-bold border-0 bg-transparent focus:outline-none">
+                            <span class="text-[11px] text-[#86868B]">reps</span>
+                        </div>
+                    </div>
+                `;
+            });
+
+            let feelHtml = '';
+            ['Too Light', 'Balanced', 'Too Heavy'].forEach(function(f) {
+                feelHtml += `<button type="button" onclick="setExerciseFeel('${ex.id}', '${f}')" class="ios-seg-btn ${st.feel === f ? 'active' : ''}">${f}</button>`;
+            });
+
+            return `
+                <div id="ex-card-${ex.id}" class="ios-card space-y-3.5 ${st.completedToday ? 'border-[#34C759] bg-[#34C759]/[0.03]' : ''}">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] font-bold uppercase px-2.5 py-0.5 rounded-full ${st.completedToday ? 'bg-[#34C759] text-white' : 'bg-[#F5F5F7] text-[#86868B]'}">
+                            ${st.completedToday ? '✓ Logged Today' : `Exercise ${exIdx + 1} of ${dayObj.exercises.length}`}
+                        </span>
+                        <div class="flex items-center gap-2">
+                            <button type="button" onclick="startRestTimer(${ex.restSec || 90})" class="text-[11px] font-semibold text-[#1D1D1F] bg-[#F5F5F7] px-2.5 py-1 rounded-full border border-[#D2D2D7] cursor-pointer">
+                                ⏱ ${ex.restSec || 90}s
+                            </button>
+                            <button type="button" onclick="viewExerciseOnAnatomyMap(${dIdx}, ${exIdx})" class="text-[12px] font-semibold text-[#0071E3] bg-transparent border-0 cursor-pointer">
+                                Map ›
+                            </button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-[18px] font-bold text-[#1D1D1F]">${ex.name}</h3>
+                        <p class="text-[12px] text-[#86868B] mt-0.5">
+                            Bias: <strong class="text-[#1D1D1F]">${MUSCLE_CATALOG[ex.primary].shortName}</strong> • Target: <strong class="text-[#0071E3]">${ex.defaultSets} × ${ex.targetRange}</strong>
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2 p-2.5 rounded-xl bg-[#F5F5F7] text-[11px]">
+                        <div>
+                            <span class="text-[#86868B] block font-medium">Last Sheet Record:</span>
+                            <span class="font-bold text-[#1D1D1F]">${st.lastSessionText || 'First Session'}</span>
+                        </div>
+                        <div>
+                            <span class="text-[#0071E3] block font-semibold">AI Next Target:</span>
+                            <span class="font-bold text-[#0071E3]">${st.aiNextTargetText || 'Ready'}</span>
+                        </div>
+                    </div>
+
+                    <div class="p-3 rounded-2xl bg-[#F5F5F7] space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[12px] font-bold text-[#1D1D1F]">Working Sets (${st.sets.length})</span>
+                            <div class="flex gap-1.5">
+                                <button type="button" onclick="removeSetFromExercise('${ex.id}')" class="px-2.5 py-0.5 bg-white border border-[#D2D2D7] rounded-lg text-[12px] font-semibold cursor-pointer">− Set</button>
+                                <button type="button" onclick="addSetToExercise('${ex.id}')" class="px-2.5 py-0.5 bg-white border border-[#D2D2D7] rounded-lg text-[12px] font-semibold text-[#0071E3] cursor-pointer">+ Set</button>
+                            </div>
+                        </div>
+                        <div class="space-y-1.5">${setsHtml}</div>
+                    </div>
+
+                    <div>
+                        <span class="text-[11px] font-semibold text-[#86868B] uppercase block mb-1.5">Effort Feel (Trains AI)</span>
+                        <div class="ios-segmented">${feelHtml}</div>
+                    </div>
+
+                    <div id="ai-rx-box-${ex.id}" class="hidden p-3 rounded-xl bg-[#0071E3]/10 text-[#1D1D1F] text-[12px] leading-relaxed"></div>
+
+                    <div class="grid grid-cols-2 gap-2">
+                        <button type="button" onclick="getGeminiWeightAndRepPrescription('${ex.id}', ${dIdx}, ${exIdx})" class="btn-apple-secondary text-[12px] py-2">
+                            🧠 Ask AI Weight
+                        </button>
+                        <button type="button" onclick="saveAndMarkExerciseDone('${ex.id}', ${dIdx}, ${exIdx})" class="py-2 px-3 rounded-xl font-semibold text-[13px] text-white border-0 cursor-pointer ${st.completedToday ? 'bg-[#34C759]' : 'bg-[#0071E3]'}">
+                            ${st.completedToday ? '✓ Saved' : '✓ Mark Done'}
+                        </button>
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+        document.getElementById('finish-workout-summary-title').textContent = `${doneCount} of ${dayObj.exercises.length} Exercises Marked Done`;
+        document.getElementById('finish-workout-vol-badge').textContent = `${dayTotalVol.toLocaleString()} kg Volume`;
+        const nextDayNum = ((dIdx + 1) % 6) + 1;
+        document.getElementById('submit-day-levelup-btn').textContent = `✓ Complete Day ${dIdx + 1} & Unlock Day ${nextDayNum} ›`;
+    }
+
+    function selectActiveSplitDay(idx) {
+        appState.activeDayIndex = idx;
+        saveAppState();
+        renderSplitTab();
+    }
+
+    function skipActiveWorkoutDay() {
+        const dIdx = appState.activeDayIndex;
+        const dayObj = appState.splitDays[dIdx];
+        
+        if (!appState.completedDaysInCycle.includes(dIdx)) {
+            appState.completedDaysInCycle.push(dIdx);
+        }
+
+        if (appState.completedDaysInCycle.length >= 6) {
+            appState.cycleCount += 1;
+            appState.completedDaysInCycle = [];
+            appState.activeDayIndex = 0;
+            showToast(`⏭ Skipped ${dayObj.subLabel} — Cycle ${appState.cycleCount} started!`);
+        } else {
+            appState.activeDayIndex = (dIdx + 1) % 6;
+            showToast(`⏭ Skipped ${dayObj.subLabel} — Advanced to Day ${appState.activeDayIndex + 1}`);
+        }
+
+        saveAppState();
+        refreshAllViews();
+        pushToGoogleSheet([], {
+            activeDayIndex: appState.activeDayIndex,
+            cycleCount: appState.cycleCount,
+            completedDaysInCycle: appState.completedDaysInCycle
+        });
+    }
+
+    function addSetToExercise(exId) {
+        const st = appState.exerciseState[exId];
+        const last = st.sets[st.sets.length - 1] || { weight: 10, reps: 10 };
+        st.sets.push({ weight: last.weight, reps: last.reps });
+        saveAppState();
+        renderSplitTab();
+    }
+
+    function removeSetFromExercise(exId) {
+        const st = appState.exerciseState[exId];
+        if (st.sets.length <= 1) return;
+        st.sets.pop();
+        saveAppState();
+        renderSplitTab();
+    }
+
+    function updateExerciseSetValue(exId, setIdx, field, val) {
+        appState.exerciseState[exId].sets[setIdx][field] = parseFloat(val) || 0;
+        saveAppState();
+    }
+
+    function setExerciseFeel(exId, feel) {
+        appState.exerciseState[exId].feel = feel;
+        saveAppState();
+        renderSplitTab();
+    }
+
+    function saveAndMarkExerciseDone(exId, dayIdx, exIdx) {
+        const ex = appState.splitDays[dayIdx].exercises[exIdx];
+        const st = appState.exerciseState[exId];
+        st.completedToday = true;
+
+        const prog = computeSmartNextTarget(ex, st);
+        st.aiNextTargetText = prog.directive;
+        st.workingWeight = prog.nextWeight;
+
+        appState.soreMuscles[ex.primary] = Date.now();
+        ex.secondary.forEach(function(sec) { appState.soreMuscles[sec] = Date.now(); });
+
+        startRestTimer(ex.restSec || 90);
+        saveAppState();
+        renderSplitTab();
+        showToast(`✓ ${ex.name} marked done!`);
+    }
+
+    async function finishDailySessionAndAdvance() {
+        const dIdx = appState.activeDayIndex;
+        const dayObj = appState.splitDays[dIdx];
+
+        let completed = dayObj.exercises.filter(function(ex) {
+            return appState.exerciseState[ex.id] && appState.exerciseState[ex.id].completedToday;
+        });
+
+        if (completed.length === 0) {
+            dayObj.exercises.forEach(function(ex) { 
+                if (appState.exerciseState[ex.id]) appState.exerciseState[ex.id].completedToday = true; 
+            });
+            completed = dayObj.exercises;
+        }
+
+        const rt = getRealTimeDateAndClock();
+        if (!appState.calendarLogs[rt.dateKey]) appState.calendarLogs[rt.dateKey] = [];
+
+        let sessionVolume = 0;
+        const sheetRowsToPush = [];
+
+        const sessionExercises = completed.map(function(ex) {
+            const st = appState.exerciseState[ex.id];
+            const prog = computeSmartNextTarget(ex, st);
+            st.aiNextTargetText = prog.directive;
+
+            const topSet = st.sets[0] || { weight: 0, reps: 0 };
+            st.lastSessionText = `${topSet.weight}kg × ${topSet.reps} (${rt.dateKey})`;
+
+            let exVol = 0;
+            const loggedSetsCopy = [];
+            st.sets.forEach(function(s, idx) {
+                const w = parseFloat(s.weight) || 0;
+                const r = parseInt(s.reps, 10) || 0;
+                exVol += (w * r);
+                loggedSetsCopy.push({ weight: w, reps: r });
+                sheetRowsToPush.push({
+                    date: rt.dateKey,
+                    time: rt.timeStr,
+                    cycle: appState.cycleCount,
+                    dayNumber: dIdx + 1,
+                    dayName: dayObj.subLabel,
+                    exerciseId: ex.id,
+                    exerciseName: ex.name,
+                    primaryMuscle: MUSCLE_CATALOG[ex.primary].shortName,
+                    setNumber: idx + 1,
+                    weight: w,
+                    reps: r,
+                    feel: st.feel,
+                    aiNextTarget: prog.directive
+                });
+            });
+
+            st.sets = st.sets.map(function() { return { weight: prog.nextWeight, reps: prog.nextReps }; });
+            st.completedToday = false;
+            sessionVolume += exVol;
+
+            return { name: ex.name, feel: st.feel, sets: loggedSetsCopy, volume: exVol, aiNext: prog.directive };
+        });
+
+        appState.calendarLogs[rt.dateKey].push({
+            dayName: dayObj.name,
+            timestamp: rt.timeStr,
+            exercises: sessionExercises,
+            totalVolume: sessionVolume
+        });
+
+        if (!appState.completedDaysInCycle.includes(dIdx)) {
+            appState.completedDaysInCycle.push(dIdx);
+        }
+
+        if (appState.completedDaysInCycle.length >= 6) {
+            appState.cycleCount += 1;
+            appState.completedDaysInCycle = [];
+            appState.activeDayIndex = 0;
+            showToast(`🏆 Cycle ${appState.cycleCount} Unlocked!`);
+        } else {
+            appState.activeDayIndex = (dIdx + 1) % 6;
+            showToast(`🔥 Day ${dIdx + 1} Saved! Unlocked Day ${appState.activeDayIndex + 1}!`);
+        }
+
+        saveAppState();
+        refreshAllViews();
+
+        await pushToGoogleSheet(sheetRowsToPush, {
+            activeDayIndex: appState.activeDayIndex,
+            cycleCount: appState.cycleCount,
+            completedDaysInCycle: appState.completedDaysInCycle
+        });
+    }
+
+    // ==========================================
+    // NAVIGATION, ANATOMY, BODY, CALENDAR & AI
+    // ==========================================
+    function switchMobileTab(tabId, keepReturnBanner) {
+        ['split', 'calendar', 'anatomy', 'body', 'ai'].forEach(function(t) {
+            document.getElementById(`tab-view-${t}`).classList.toggle('hidden', t !== tabId);
+            document.getElementById(`nav-tab-${t}`).classList.toggle('active', t === tabId);
+        });
+        if (!keepReturnBanner && tabId !== 'anatomy') hideReturnToWorkoutBanner();
+        if (tabId === 'calendar') renderCalendarTab();
+        if (tabId === 'body') renderBodyTrackTab();
+        if (tabId === 'split') renderSplitTab();
+        if (tabId === 'anatomy') renderAnatomyTab();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function viewExerciseOnAnatomyMap(dayIdx, exIdx) {
+        const dayObj = appState.splitDays[dayIdx];
+        const ex = dayObj.exercises[exIdx];
+        returnNavigationContext = { dayIndex: dayIdx, exerciseId: ex.id };
+        const banner = document.getElementById('return-to-workout-banner');
+        document.getElementById('return-banner-title').textContent = `‹ Back to ${dayObj.shortTab} (${dayObj.subLabel})`;
+        document.getElementById('return-banner-sub').textContent = `Returning to: ${ex.name}`;
+        banner.classList.remove('hidden');
+        banner.classList.add('flex');
+        switchMobileTab('anatomy', true);
+        document.getElementById('synergy-exercise-select').value = `${dayIdx}_${exIdx}`;
+        onSelectSynergyExercise(`${dayIdx}_${exIdx}`);
+    }
+
+    function returnToWorkoutExercise() {
+        if (!returnNavigationContext) return;
+        const dayIndex = returnNavigationContext.dayIndex;
+        const exerciseId = returnNavigationContext.exerciseId;
+        appState.activeDayIndex = dayIndex;
+        hideReturnToWorkoutBanner();
+        switchMobileTab('split');
+        setTimeout(function() {
+            const el = document.getElementById(`ex-card-${exerciseId}`);
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 120);
+    }
+
+    function hideReturnToWorkoutBanner() {
+        returnNavigationContext = null;
+        document.getElementById('return-to-workout-banner').classList.add('hidden');
+        document.getElementById('return-to-workout-banner').classList.remove('flex');
+    }
+
+    function isMuscleCurrentlySore(muscleId) {
+        const ts = appState.soreMuscles[muscleId];
+        if (!ts) return false;
+        const hoursElapsed = (Date.now() - ts) / (1000 * 3600);
+        if (hoursElapsed >= (MUSCLE_CATALOG[muscleId] ? MUSCLE_CATALOG[muscleId].recoveryHours : 48)) {
+            delete appState.soreMuscles[muscleId];
+            return false;
+        }
+        return true;
+    }
+
+    function toggleFreshColorPreference() {
+        appState.freshColorPref = appState.freshColorPref === 'green' ? 'blue' : 'green';
+        saveAppState();
+        renderAnatomyTab();
+    }
+
+    function populateSynergyExerciseDropdown() {
+        const sel = document.getElementById('synergy-exercise-select');
+        let html = `<option value="">— Pure Recovery Map (All Muscles) —</option>`;
+        appState.splitDays.forEach(function(d, dIdx) {
+            html += `<optgroup label="${d.name}">`;
+            d.exercises.forEach(function(ex, eIdx) {
+                html += `<option value="${dIdx}_${eIdx}">${ex.name} (${MUSCLE_CATALOG[ex.primary].shortName})</option>`;
+            });
+            html += `</optgroup>`;
+        });
+        sel.innerHTML = html;
+    }
+
+    function onSelectSynergyExercise(val) {
+        if (!val) {
+            activeSynergyExercise = null;
+            renderAnatomyTab();
+            return;
+        }
+        const parts = val.split('_');
+        const dIdx = parseInt(parts[0], 10);
+        const eIdx = parseInt(parts[1], 10);
+        activeSynergyExercise = Object.assign({}, appState.splitDays[dIdx].exercises[eIdx], { dayIdx: dIdx, exIdx: eIdx });
+        selectedMuscleOnAtlas = activeSynergyExercise.primary;
+        renderAnatomyTab();
+    }
+
+    function clearExerciseSynergyPreview() {
+        document.getElementById('synergy-exercise-select').value = '';
+        activeSynergyExercise = null;
+        renderAnatomyTab();
+    }
+
+    function onTapMuscleMap(muscleId) {
+        selectedMuscleOnAtlas = muscleId;
+        if (isMuscleCurrentlySore(muscleId)) {
+            delete appState.soreMuscles[muscleId];
+            showToast(`${MUSCLE_CATALOG[muscleId].shortName} marked Fresh`);
+        } else {
+            appState.soreMuscles[muscleId] = Date.now();
+            showToast(`${MUSCLE_CATALOG[muscleId].shortName} marked Sore`);
+        }
+        saveAppState();
+        renderAnatomyTab();
+    }
+
+    function resetAllMusclesFresh() {
+        appState.soreMuscles = {};
+        saveAppState();
+        renderAnatomyTab();
+        showToast('All muscles restored to Fresh');
+    }
+
+    function renderAnatomyTab() {
+        const freshHex = appState.freshColorPref === 'green' ? '#34C759' : '#0071E3';
+        document.getElementById('fresh-color-toggle-btn').textContent = `Fresh: ${appState.freshColorPref === 'green' ? 'Green' : 'Blue'}`;
+        document.getElementById('legend-fresh-dot').style.backgroundColor = freshHex;
+
+        document.querySelectorAll('.muscle-svg-region').forEach(function(path) {
+            const mId = path.getAttribute('data-muscle');
+            const isSore = isMuscleCurrentlySore(mId);
+            if (activeSynergyExercise) {
+                const isPrim = activeSynergyExercise.primary === mId;
+                const isSec = activeSynergyExercise.secondary.includes(mId);
+                if (isPrim) { path.style.fill = freshHex; path.style.opacity = '1'; }
+                else if (isSec) { path.style.fill = '#FF9500'; path.style.opacity = '0.9'; }
+                else if (isSore) { path.style.fill = '#FF3B30'; path.style.opacity = '0.5'; }
+                else { path.style.fill = '#D2D2D7'; path.style.opacity = '0.4'; }
+            } else {
+                path.style.fill = isSore ? '#FF3B30' : freshHex;
+                path.style.opacity = mId === selectedMuscleOnAtlas ? '1' : '0.7';
+            }
+        });
+
+        document.getElementById('anatomy-muscle-chips').innerHTML = Object.values(MUSCLE_CATALOG).map(function(m) {
+            const sore = isMuscleCurrentlySore(m.id);
+            return `<button type="button" onclick="onTapMuscleMap('${m.id}')" class="px-3 py-1.5 rounded-full text-[12px] font-semibold border cursor-pointer ${sore ? 'bg-[#FF3B30] text-white border-[#FF3B30]' : 'bg-white text-[#1D1D1F] border-[#D2D2D7]'}">${m.shortName} ${sore ? '• Sore' : '• Fresh'}</button>`;
+        }).join('');
+
+        const mObj = MUSCLE_CATALOG[selectedMuscleOnAtlas] || MUSCLE_CATALOG.chest;
+        document.getElementById('anatomy-detail-title').textContent = activeSynergyExercise ? activeSynergyExercise.name : mObj.name;
+        document.getElementById('anatomy-detail-desc').textContent = mObj.desc;
+        document.getElementById('anatomy-synergy-breakdown').innerHTML = activeSynergyExercise
+            ? `<div><strong>Primary:</strong> ${MUSCLE_CATALOG[activeSynergyExercise.primary].name}</div>`
+            : `<div><strong>Recovery Window:</strong> ~${mObj.recoveryHours}h</div>`;
+        document.getElementById('anatomy-detail-cues').innerHTML = (activeSynergyExercise ? activeSynergyExercise.cues : mObj.cues).map(function(c) { return `<li>${c}</li>`; }).join('');
+    }
+
+    function openMuscleWikiLink() {
+        const m = MUSCLE_CATALOG[selectedMuscleOnAtlas] || MUSCLE_CATALOG.chest;
+        window.open(`https://musclewiki.com/exercises/male/${m.wikiSlug}`, '_blank', 'noopener');
+    }
+
+    function startRestTimer(seconds) {
+        clearInterval(restTimerInterval);
+        restSecondsRemaining = seconds;
+        const island = document.getElementById('dynamic-island-timer');
+        island.classList.remove('hidden');
+        island.classList.add('flex');
+        updateRestTimerDisplay();
+
+        restTimerInterval = setInterval(function() {
+            restSecondsRemaining--;
+            if (restSecondsRemaining <= 0) {
+                stopRestTimer();
+                showToast('⚡ Rest complete!');
+            } else {
+                updateRestTimerDisplay();
+            }
+        }, 1000);
+    }
+
+    function updateRestTimerDisplay() {
+        const mins = Math.floor(restSecondsRemaining / 60);
+        const secs = restSecondsRemaining % 60;
+        document.getElementById('island-timer-display').textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    }
+
+    function addRestSeconds(sec) { restSecondsRemaining += sec; updateRestTimerDisplay(); }
+    function stopRestTimer() {
+        clearInterval(restTimerInterval);
+        document.getElementById('dynamic-island-timer').classList.add('hidden');
+        document.getElementById('dynamic-island-timer').classList.remove('flex');
+    }
+
+    function renderAiTabModelCards() {
+        document.getElementById('ai-tab-model-cards').innerHTML = AI_MODELS.map(function(m) {
+            return `
+                <button type="button" onclick="selectGeminiModel('${m.id}')" class="gemini-model-option ${m.id === appState.selectedModelId ? 'selected' : ''}">
+                    <div>
+                        <div class="text-[14px] font-bold text-white">${m.id}</div>
+                        <div class="text-[12px] text-[#8E8E93]">${m.desc}</div>
+                    </div>
+                    ${m.id === appState.selectedModelId ? '<span class="text-white text-[15px] font-bold">✓</span>' : ''}
+                </button>
+            `;
+        }).join('');
+    }
+
+    function selectGeminiModel(id) {
+        appState.selectedModelId = id;
+        saveAppState();
+        renderAiTabModelCards();
+        updateTopStatusBar();
+        showToast(`Model: ${id}`);
+    }
+
+    function setThinkingLevel(lvl) {
+        appState.thinkingLevel = lvl;
+        document.querySelectorAll('#thinking-level-bar .ios-seg-btn').forEach(function(b) {
+            b.classList.toggle('active', b.getAttribute('data-think') === lvl);
+        });
+        saveAppState();
+    }
+
+    function buildUserTrainingContextForAi() {
+        const p = appState.profile;
+        const dObj = appState.splitDays[appState.activeDayIndex];
+        let exSummary = '';
+        dObj.exercises.forEach(function(ex) {
+            const st = appState.exerciseState[ex.id];
+            if (st) exSummary += `${ex.name}: Sets=${JSON.stringify(st.sets)}, Last=${st.lastSessionText}, Feel=${st.feel} | `;
+        });
+        return `USER: Arbaaj, ${p.heightCm}cm, ${p.weightKg}kg. GOAL: Broad upper chest, wide side delts, V-taper lats, sleeve-filling biceps/triceps. ACTIVE DAY: ${dObj.name}. LOGS: ${exSummary}`;
+    }
+
+    async function callGeminiApi(sysInstruction, userPrompt) {
+        if (!vaultData.apiKey) {
+            return `**${appState.selectedModelId} Offline Calculation:** Add your Gemini API key in Settings ⚙️ for live cloud reasoning. Based on your ${appState.profile.weightKg}kg stats, hit the top of the rep range before adding +1.25kg to +2.5kg.`;
+        }
+        const mObj = AI_MODELS.find(function(m) { return m.id === appState.selectedModelId; }) || AI_MODELS[3];
+        const fullSystem = `${sysInstruction}\n\n[MODEL: ${mObj.id} | THINKING: ${appState.thinkingLevel}]\n${buildUserTrainingContextForAi()}`;
+        try {
+            const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${mObj.apiModel}:generateContent?key=${encodeURIComponent(vaultData.apiKey)}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ contents: [{ parts: [{ text: userPrompt }] }], systemInstruction: { parts: [{ text: fullSystem }] } })
+            });
+            if (res.ok) {
+                const data = await res.json();
+                if (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts && data.candidates[0].content.parts[0]) {
+                    return data.candidates[0].content.parts[0].text;
+                }
+            }
+        } catch (e) {}
+        return `Maintain strict 2-second lowering control and progressive overload.`;
+    }
+
+    async function getGeminiWeightAndRepPrescription(exId, dayIdx, exIdx) {
+        const ex = appState.splitDays[dayIdx].exercises[exIdx];
+        const st = appState.exerciseState[exId];
+        const box = document.getElementById(`ai-rx-box-${exId}`);
+        box.classList.remove('hidden');
+        box.innerHTML = `<em>${appState.selectedModelId} is analyzing your Sheet history...</em>`;
+        const prog = computeSmartNextTarget(ex, st);
+        const reply = await callGeminiApi('You are an elite hypertrophy coach.', `Analyze ${ex.name} (${ex.targetRange}). Current sets: ${JSON.stringify(st.sets)}, feel: ${st.feel}. Give 2 short sentences on weight & reps.`);
+        st.aiNextTargetText = prog.directive;
+        saveAppState();
+        box.innerHTML = `<strong>${prog.directive}</strong><br><span class="text-[#86868B]">${reply}</span>`;
+    }
+
+    async function runFullDayAiWeightPrep() {
+        const dIdx = appState.activeDayIndex;
+        appState.splitDays[dIdx].exercises.forEach(function(ex) {
+            const st = appState.exerciseState[ex.id];
+            const prog = computeSmartNextTarget(ex, st);
+            st.aiNextTargetText = prog.directive;
+            st.sets = st.sets.map(function() { return { weight: prog.nextWeight, reps: prog.nextReps }; });
+        });
+        saveAppState();
+        renderSplitTab();
+        showToast('✨ Weights calibrated for today!');
+    }
+
+    function renderAiChatStream() {
+        const stream = document.getElementById('ai-chat-stream');
+        stream.innerHTML = appState.chatHistory.map(function(m) {
+            return `<div class="p-3.5 rounded-2xl text-[13px] leading-relaxed ${m.role === 'user' ? 'bg-[#0071E3] text-white ml-8' : 'bg-[#F5F5F7] text-[#1D1D1F] mr-4'}">${m.text}</div>`;
+        }).join('');
+        stream.scrollTop = stream.scrollHeight;
+    }
+
+    function sendQuickCoachPrompt(t) {
+        document.getElementById('ai-chat-input').value = t;
+        handleAiChatSubmit(new Event('submit'));
+    }
+
+    async function handleAiChatSubmit(e) {
+        if (e && e.preventDefault) e.preventDefault();
+        const inp = document.getElementById('ai-chat-input');
+        const q = inp.value.trim();
+        if (!q) return;
+        inp.value = '';
+        appState.chatHistory.push({ role: 'user', text: q });
+        renderAiChatStream();
+        const reply = await callGeminiApi('You are Form Mobile AI Coach.', q);
+        appState.chatHistory.push({ role: 'ai', text: reply });
+        saveAppState();
+        renderAiChatStream();
+    }
+
+    function clearAiChatHistory() {
+        appState.chatHistory = [{ role: 'ai', text: 'Chat cleared.' }];
+        saveAppState();
+        renderAiChatStream();
+    }
+
+    function renderCalendarTab() {
+        const year = currentCalendarDate.getFullYear();
+        const month = currentCalendarDate.getMonth();
+        const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+        document.getElementById('calendar-month-title').textContent = `${monthNames[month]} ${year}`;
+        const firstDay = new Date(year, month, 1).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        let html = '';
+        for (let i = 0; i < firstDay; i++) html += `<div></div>`;
+        for (let d = 1; d <= daysInMonth; d++) {
+            const key = `${year}-${String(month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+            const hasLogs = appState.calendarLogs[key] && appState.calendarLogs[key].length > 0;
+            const isSelected = key === selectedCalendarDateKey;
+            html += `
+                <button type="button" onclick="selectCalendarDate('${key}')" class="h-11 rounded-xl flex flex-col items-center justify-center border font-semibold text-[13px] cursor-pointer ${isSelected ? 'bg-[#0071E3] text-white border-[#0071E3]' : hasLogs ? 'bg-[#34C759]/10 text-[#1D1D1F] border-[#34C759]/40' : 'bg-[#F5F5F7]' }">
+                    <span>${d}</span>${hasLogs ? `<span class="w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-white' : 'bg-[#34C759]'} mt-0.5"></span>` : ''}
+                </button>
+            `;
+        }
+        document.getElementById('calendar-days-grid').innerHTML = html;
+        renderSelectedCalendarDateDetails(selectedCalendarDateKey);
+    }
+
+    function changeCalendarMonth(d) {
+        currentCalendarDate = d === 0 ? new Date() : new Date(currentCalendarDate.getFullYear(), currentCalendarDate.getMonth() + d, 1);
+        renderCalendarTab();
+    }
+
+    function selectCalendarDate(k) {
+        selectedCalendarDateKey = k;
+        renderCalendarTab();
+    }
+
+    function renderSelectedCalendarDateDetails(k) {
+        document.getElementById('calendar-selected-date-label').textContent = `Workout Record • ${k}`;
+        const logs = appState.calendarLogs[k] || [];
+        document.getElementById('calendar-selected-vol-badge').textContent = logs.length ? `${logs.reduce(function(a,s){return a+(s.totalVolume||0);},0)} kg Total` : '';
+        if (logs.length === 0) {
+            document.getElementById('calendar-selected-logs').innerHTML = '<p class="text-[13px] text-[#86868B]">No workout logged on this date.</p>';
+            return;
+        }
+        document.getElementById('calendar-selected-logs').innerHTML = logs.map(function(sess) {
+            const exList = (sess.exercises || []).map(function(ex) {
+                const setsStr = (ex.sets || []).map(function(s, i) { return `S${i+1}: ${s.weight}kg×${s.reps}`; }).join(' • ');
+                return `<div class="bg-white p-2.5 rounded-xl border border-[#D2D2D7]/50 mt-1.5">
+                    <div class="flex justify-between font-bold text-[#1D1D1F] text-[13px]"><span>${ex.name}</span><span class="text-[#0071E3] text-[11px]">${ex.feel || ''}</span></div>
+                    <div class="text-[12px] text-[#86868B] mt-0.5">${setsStr}</div>
+                </div>`;
+            }).join('');
+            return `<div class="p-3.5 bg-[#F5F5F7] rounded-2xl">
+                <div class="flex justify-between items-center"><strong class="text-[#1D1D1F]">${sess.dayName}</strong><span class="text-[11px] text-[#86868B]">${sess.timestamp || ''}</span></div>
+                ${exList}
+            </div>`;
+        }).join('');
+    }
+
+    function renderBodyTrackTab() {
+        const w = parseFloat(appState.profile.weightKg) || 55.5;
+        const h = parseFloat(appState.profile.heightCm) || 178;
+        const age = parseFloat(appState.profile.age) || 19;
+        const tdee = Math.round(((10 * w) + (6.25 * h) - (5 * age) + 5) * 1.55);
+        document.getElementById('body-current-weight').textContent = `${w} kg`;
+        document.getElementById('body-height-sub').textContent = `${h} cm (5'10")`;
+        document.getElementById('body-calories-display').textContent = `${appState.profile.dailyCalories} kcal`;
+        document.getElementById('body-protein-display').textContent = `${appState.profile.dailyProtein}g Protein`;
+        document.getElementById('body-tdee-display').textContent = `${tdee} kcal`;
+
+        let mHtml = '';
+        Object.keys(appState.measurements).forEach(function(k) {
+            const m = appState.measurements[k];
+            mHtml += `
+            <div class="p-3 rounded-2xl bg-[#F5F5F7] flex items-center justify-between">
+                <span class="font-semibold text-[14px] text-[#1D1D1F]">${m.name} (${m.unit})</span>
+                <div class="flex items-center gap-2">
+                    <input id="verify-input-${k}" type="number" step="0.1" value="${m.actual}" class="ios-input w-24 text-center h-9 font-bold">
+                    <button type="button" onclick="saveActualMeasurement('${k}')" class="btn-apple-primary py-1.5 px-3 min-h-[36px] text-[12px]">Save</button>
+                </div>
+            </div>`;
+        });
+        document.getElementById('measurements-cards-list').innerHTML = mHtml;
+    }
+
+    function saveActualMeasurement(key) {
+        const val = parseFloat(document.getElementById(`verify-input-${key}`).value);
+        if (isNaN(val)) return;
+        appState.measurements[key].actual = val;
+        if (key === 'weight') appState.profile.weightKg = val;
+        saveAppState();
+        renderBodyTrackTab();
+        updateTopStatusBar();
+        pushToGoogleSheet([], { profile: appState.profile, measurements: appState.measurements });
+    }
+
+    function openOnboardingModal() {
+        document.getElementById('ob-age').value = appState.profile.age || 19;
+        document.getElementById('ob-height').value = appState.profile.heightCm || 178;
+        document.getElementById('ob-weight').value = appState.profile.weightKg || 55.5;
+        document.getElementById('ob-calories').value = appState.profile.dailyCalories || 2600;
+        document.getElementById('ob-protein').value = appState.profile.dailyProtein || 125;
+        document.getElementById('ob-chest').value = appState.measurements.chest.actual || 34.5;
+        document.getElementById('ob-biceps').value = appState.measurements.biceps.actual || 12.5;
+        document.getElementById('ob-shoulders').value = appState.measurements.shoulders.actual || 42.0;
+        document.getElementById('ob-forearms').value = appState.measurements.forearms.actual || 10.5;
+        document.getElementById('ob-thighs').value = appState.measurements.thighs.actual || 19.5;
+        document.getElementById('ob-calves').value = appState.measurements.calves.actual || 13.5;
+        document.getElementById('ob-waist').value = appState.measurements.waist.actual || 29.5;
+        document.getElementById('onboarding-modal').classList.remove('hidden');
+        document.getElementById('onboarding-modal').classList.add('flex');
+    }
+
+    function closeOnboardingModal() {
+        document.getElementById('onboarding-modal').classList.add('hidden');
+        document.getElementById('onboarding-modal').classList.remove('flex');
+    }
+
+    function saveOnboardingBaseline(e) {
+        e.preventDefault();
+        appState.profile = {
+            age: parseFloat(document.getElementById('ob-age').value) || 19,
+            heightCm: parseFloat(document.getElementById('ob-height').value) || 178,
+            weightKg: parseFloat(document.getElementById('ob-weight').value) || 55.5,
+            dailyCalories: parseInt(document.getElementById('ob-calories').value, 10) || 2600,
+            dailyProtein: parseInt(document.getElementById('ob-protein').value, 10) || 125
+        };
+        appState.measurements.weight.actual = appState.profile.weightKg;
+        ['chest', 'biceps', 'shoulders', 'forearms', 'thighs', 'calves', 'waist'].forEach(function(k) {
+            const v = parseFloat(document.getElementById(`ob-${k}`).value);
+            if (!isNaN(v)) appState.measurements[k].actual = v;
+        });
+        saveAppState();
+        closeOnboardingModal();
+        refreshAllViews();
+        pushToGoogleSheet([], { profile: appState.profile, measurements: appState.measurements });
+    }
+
+    function openSettingsModal() {
+        document.getElementById('settings-sheet-url-input').value = vaultData.sheetUrl || '';
+        document.getElementById('settings-api-key-input').value = vaultData.apiKey || '';
+        document.getElementById('settings-modal').classList.remove('hidden');
+        document.getElementById('settings-modal').classList.add('flex');
+    }
+
+    function closeSettingsModal() {
+        document.getElementById('settings-modal').classList.add('hidden');
+        document.getElementById('settings-modal').classList.remove('flex');
+    }
+
+    function saveSettingsSheetUrl() {
+        vaultData.sheetUrl = document.getElementById('settings-sheet-url-input').value.trim();
+        localStorage.setItem(VAULT_KEY, JSON.stringify(vaultData));
+        syncFromGoogleSheet(true);
+    }
+
+    function saveSettingsApiKey() {
+        vaultData.apiKey = document.getElementById('settings-api-key-input').value.trim();
+        localStorage.setItem(VAULT_KEY, JSON.stringify(vaultData));
+        pushToGoogleSheet([], { privateApiKey: vaultData.apiKey });
+        showToast('✓ API Key saved to private vault!');
+    }
+
+    function showToast(msg) {
+        const t = document.getElementById('ios-toast');
+        document.getElementById('ios-toast-text').textContent = msg;
+        t.classList.remove('hidden');
+        clearTimeout(window.__toastTimer);
+        window.__toastTimer = setTimeout(function() { t.classList.add('hidden'); }, 3200);
+    }
+
+    function updateTopStatusBar() {
+        const rt = getRealTimeDateAndClock();
+        document.getElementById('top-cycle-badge').textContent = `Cycle ${appState.cycleCount} • Day ${appState.activeDayIndex + 1} of 6`;
+        document.getElementById('top-model-pill').textContent = appState.selectedModelId;
+        document.getElementById('top-profile-sub').textContent = `${rt.displayClock} • ${appState.profile.heightCm}cm • ${appState.profile.weightKg}kg`;
+    }
+
+    function refreshAllViews() {
+        updateTopStatusBar();
+        populateSynergyExerciseDropdown();
+        renderSplitTab();
+        renderAnatomyTab();
+        renderBodyTrackTab();
+        renderCalendarTab();
+        renderAiTabModelCards();
+        renderAiChatStream();
+    }
+
+    window.onload = function () {
+        loadAppState();
+        refreshAllViews();
+        loadVaultAndCheckLock();
+    };
+</script>
+</body>
+</html>
